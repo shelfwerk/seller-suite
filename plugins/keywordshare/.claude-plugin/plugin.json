@@ -1,0 +1,11 @@
+{
+  "name": "keywordshare",
+  "displayName": "KeywordShare — your share of Amazon search demand",
+  "version": "1.0.2",
+  "description": "Reads the Brand Analytics Search Query Performance report and shows your impression, click, cart-add and purchase share per search query, where the funnel leaks, the biggest visibility gaps, strong queries to defend and a keyword list for your listing. Runs locally, no API keys.",
+  "author": {
+    "name": "Michael Fenkhuber"
+  },
+  "license": "MIT",
+  "keywords": ["amazon", "brand-analytics", "search-query-performance", "sqp", "market-share", "keywords", "seo", "fba"]
+}

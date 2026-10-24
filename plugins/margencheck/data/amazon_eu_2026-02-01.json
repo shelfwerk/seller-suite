@@ -1,0 +1,1568 @@
+{
+ "_meta": {
+  "tabelle": "amazon_eu",
+  "version": "2026-02-01",
+  "gueltig_ab": "2026-02-01",
+  "stand": "2026-10-22",
+  "naechste_pruefung": "2027-01-15",
+  "quelle": "Amazon Tarifübersicht 'Gebühren für Europa', gültig ab 1. Februar 2026 (m.media-amazon.com/images/G/02/sell/images/260114-FBA-Rate-Card-DE-v1.pdf, abgerufen 22.10.2026); ergänzt um sell.amazon.de/preisgestaltung (Erstattungsgebühr, Treibstoffaufschlag) und die Amazon-Ankündigung zur Digital-Services-Gebühr ab 20.03.2026",
+  "hinweis": "Amazon ändert die EU-Gebühren meist zum 1. Februar und kündigt die Spitzenzeit-Gebühren im September an. Werte mit status 'offiziell' stammen 1:1 aus der Tarifübersicht; 'drittquelle' und 'annahme' sind gekennzeichnet und sollten im Revenue Calculator geprüft werden. Eigene Werte: Kopie dieser Datei als margencheck-gebuehren.json in den Arbeitsordner legen (siehe references/gebuehren-pflegen.md)."
+ },
+ "maerkte": {
+  "DE": {
+   "name": "amazon.de",
+   "spalte": "DE",
+   "ust": 0.19,
+   "dst": 0.0,
+   "spitzenzeit": true,
+   "hinweis": "Lager in DE ohne Zentraleuropa-Programm (CEP) – Spalte 'Nur DE'."
+  },
+  "DE-CEP": {
+   "name": "amazon.de (mit CEP)",
+   "spalte": "CEP",
+   "ust": 0.19,
+   "dst": 0.0,
+   "spitzenzeit": true,
+   "hinweis": "Teilnahme am Zentraleuropa-Programm (Lager DE/PL/CZ) – 0,26 € je Einheit günstiger als 'Nur DE'."
+  },
+  "FR": {
+   "name": "amazon.fr",
+   "spalte": "FR",
+   "ust": 0.2,
+   "dst": 0.03,
+   "dst_referral": 0.03,
+   "dst_fba": 0.03,
+   "spitzenzeit": false
+  },
+  "IT": {
+   "name": "amazon.it",
+   "spalte": "IT",
+   "ust": 0.22,
+   "dst": 0.03,
+   "dst_referral": 0.03,
+   "dst_fba": 0.0,
+   "spitzenzeit": false
+  },
+  "ES": {
+   "name": "amazon.es",
+   "spalte": "ES",
+   "ust": 0.21,
+   "dst": 0.03,
+   "dst_referral": 0.03,
+   "dst_fba": 0.0,
+   "spitzenzeit": false
+  }
+ },
+ "dst_hinweis": {
+  "status": "offiziell",
+  "stand": "2026-10-22",
+  "quelle": "Amazon-Ankündigung 'Update to digital services fee starting March 20' (News_Amazon, Seller Forums Europe, gültig ab 20.03.2026): Für Verkäufer mit Sitz außerhalb UK/FR/IT/ES (z. B. DE, AT) 3 % auf die Verkaufsgebühren in FR, IT, ES und zusätzlich 3 % auf die FBA-Gebühren in FR. Verkäufer mit Sitz in UK, IT oder ES zahlen abweichend (UK-Sitz: 3 % auf Verkaufs- und FBA-Gebühren in FR/IT/ES) – dann dst_referral/dst_fba in margencheck-gebuehren.json anpassen."
+ },
+ "treibstoffzuschlag": {
+  "_hinweis": "Treibstoff- und Logistikaufschlag auf die FBA-Versandgebühren (nicht auf Verkaufsgebühren). Es gilt der Satz am Tag der Verfügbarkeit bei Amazon.",
+  "maerkte": ["DE", "DE-CEP", "FR", "IT", "ES"],
+  "stufen": [
+   {"ab": "2026-04-17", "satz": 0.015, "status": "offiziell", "quelle": "sell.amazon.de/preisgestaltung (abgerufen 22.10.2026): 'Ab dem 17. April 2026 … Treibstoff- und Logistikaufschlag von 1,5 % auf die Versandgebühren für Versand durch Amazon (FBA)'"},
+   {"ab": "2026-11-02", "satz": 0.02, "status": "drittquelle", "quelle": "Händlerbund / etailment.de 20.10.2026: Erhöhung auf 2 % ab 02.11.2026 für 10 EU-Marktplätze inkl. DE, FR, IT, ES (Seller-Central-Ankündigung lt. Bericht; auf sell.amazon.de am 22.10.2026 noch 1,5 %)"}
+  ]
+ },
+ "groessenklassen": {
+  "_status": "offiziell",
+  "_quelle": "Amazon Tarifübersicht 'Gebühren für Europa', gültig ab 1. Februar 2026 (m.media-amazon.com/images/G/02/sell/images/260114-FBA-Rate-Card-DE-v1.pdf, abgerufen 22.10.2026), Seiten 5–7",
+  "_regel_gewicht": "Umschläge, Niedrigpreisversand und 'ausgewählte Kategorien' (u. a. Kleidung & Accessoires, Schuhe, Heimtextilien, Taschen) nach Stückgewicht; Pakete und Übergrößen sonst nach max(Stückgewicht, Volumengewicht = L×B×H/5000).",
+  "volumen_teiler": 5000,
+  "reihenfolge": [
+   "umschlag_leicht",
+   "umschlag_standard",
+   "umschlag_gross",
+   "umschlag_xl",
+   "paket_klein",
+   "paket_standard",
+   "uebergroesse_klein",
+   "uebergroesse_std_leicht",
+   "uebergroesse_std_schwer",
+   "uebergroesse_std_gross",
+   "uebergroesse_sperrig",
+   "uebergroesse_schwer",
+   "uebergroesse_besonders"
+  ],
+  "def": {
+   "umschlag_leicht": {
+    "name": "Leichter Umschlag",
+    "max_cm": [
+     33,
+     23,
+     2.5
+    ],
+    "max_g": 100,
+    "art": "umschlag"
+   },
+   "umschlag_standard": {
+    "name": "Standardumschlag",
+    "max_cm": [
+     33,
+     23,
+     2.5
+    ],
+    "max_g": 460,
+    "art": "umschlag"
+   },
+   "umschlag_gross": {
+    "name": "Großer Umschlag",
+    "max_cm": [
+     33,
+     23,
+     4
+    ],
+    "max_g": 960,
+    "art": "umschlag"
+   },
+   "umschlag_xl": {
+    "name": "Extra großer Umschlag",
+    "max_cm": [
+     33,
+     23,
+     6
+    ],
+    "max_g": 960,
+    "art": "umschlag"
+   },
+   "paket_klein": {
+    "name": "Kleines Paket",
+    "max_cm": [
+     35,
+     25,
+     12
+    ],
+    "max_g": 3900,
+    "max_vol_g": 2100,
+    "art": "paket"
+   },
+   "paket_standard": {
+    "name": "Standardpaket",
+    "max_cm": [
+     45,
+     34,
+     26
+    ],
+    "max_g": 11900,
+    "max_vol_g": 7960,
+    "art": "paket"
+   },
+   "uebergroesse_klein": {
+    "name": "Kleine Übergröße",
+    "max_cm": [
+     61,
+     46,
+     46
+    ],
+    "max_g": 1760,
+    "max_vol_g": 25820,
+    "art": "uebergroesse"
+   },
+   "uebergroesse_std_leicht": {
+    "name": "Standardübergröße leicht",
+    "max_cm": [
+     101,
+     60,
+     60
+    ],
+    "max_g": 15000,
+    "max_vol_g": 72720,
+    "art": "uebergroesse"
+   },
+   "uebergroesse_std_schwer": {
+    "name": "Standardübergröße schwer",
+    "max_cm": [
+     101,
+     60,
+     60
+    ],
+    "max_g": 23000,
+    "max_vol_g": 72720,
+    "art": "uebergroesse"
+   },
+   "uebergroesse_std_gross": {
+    "name": "Standardübergröße groß",
+    "max_cm": [
+     120,
+     60,
+     60
+    ],
+    "max_g": 23000,
+    "max_vol_g": 86400,
+    "art": "uebergroesse"
+   },
+   "uebergroesse_sperrig": {
+    "name": "Übergröße sperrig",
+    "max_cm": [
+     175,
+     999,
+     999
+    ],
+    "max_g": 23000,
+    "max_vol_g": 126000,
+    "art": "uebergroesse"
+   },
+   "uebergroesse_schwer": {
+    "name": "Übergröße schwer",
+    "max_cm": [
+     175,
+     999,
+     999
+    ],
+    "max_g": 31500,
+    "max_vol_g": 126000,
+    "art": "uebergroesse"
+   },
+   "uebergroesse_besonders": {
+    "name": "Besondere Übergröße",
+    "max_cm": [
+     9999,
+     9999,
+     9999
+    ],
+    "max_g": 999999,
+    "art": "uebergroesse"
+   }
+  },
+  "auswahl_kategorien_paket": {
+   "_hinweis": "Pakete in ausgewählten Kategorien: Grundgebühr bis 100 g + Zusatz je weitere angefangene 100 g, nur Stückgewicht.",
+   "reihenfolge": [
+    "kp1",
+    "kp2",
+    "kp3",
+    "mp1",
+    "mp2",
+    "gp1",
+    "gp2"
+   ],
+   "def": {
+    "kp1": {
+     "name": "Kleines Paket 1",
+     "max_cm": [
+      35,
+      25,
+      7
+     ],
+     "max_g": 3900
+    },
+    "kp2": {
+     "name": "Kleines Paket 2",
+     "max_cm": [
+      35,
+      25,
+      9
+     ],
+     "max_g": 3900
+    },
+    "kp3": {
+     "name": "Kleines Paket 3",
+     "max_cm": [
+      35,
+      25,
+      12
+     ],
+     "max_g": 3900
+    },
+    "mp1": {
+     "name": "Mittelgroßes Paket 1",
+     "max_cm": [
+      40,
+      30,
+      6
+     ],
+     "max_g": 11900
+    },
+    "mp2": {
+     "name": "Mittelgroßes Paket 2",
+     "max_cm": [
+      40,
+      30,
+      20
+     ],
+     "max_g": 11900
+    },
+    "gp1": {
+     "name": "Großes Paket 1",
+     "max_cm": [
+      45,
+      34,
+      10
+     ],
+     "max_g": 11900
+    },
+    "gp2": {
+     "name": "Großes Paket 2",
+     "max_cm": [
+      45,
+      34,
+      26
+     ],
+     "max_g": 11900
+    }
+   }
+  }
+ },
+ "fba_standard": {
+  "umschlag_leicht": {
+   "bis_g": [
+    20,
+    40,
+    60,
+    80,
+    100
+   ],
+   "gebuehr": {
+    "CEP": [
+     2.07,
+     2.11,
+     2.13,
+     2.26,
+     2.28
+    ],
+    "DE": [
+     2.33,
+     2.37,
+     2.39,
+     2.52,
+     2.54
+    ],
+    "FR": [
+     2.75,
+     2.76,
+     2.78,
+     3.3,
+     3.32
+    ],
+    "IT": [
+     3.23,
+     3.26,
+     3.28,
+     3.39,
+     3.41
+    ],
+    "ES": [
+     2.77,
+     2.84,
+     2.87,
+     3.21,
+     3.23
+    ]
+   }
+  },
+  "umschlag_standard": {
+   "bis_g": [
+    210,
+    460
+   ],
+   "gebuehr": {
+    "CEP": [
+     2.31,
+     2.42
+    ],
+    "DE": [
+     2.57,
+     2.68
+    ],
+    "FR": [
+     3.33,
+     3.77
+    ],
+    "IT": [
+     3.45,
+     3.64
+    ],
+    "ES": [
+     3.26,
+     3.45
+    ]
+   }
+  },
+  "umschlag_gross": {
+   "bis_g": [
+    960
+   ],
+   "gebuehr": {
+    "CEP": [
+     2.78
+    ],
+    "DE": [
+     3.04
+    ],
+    "FR": [
+     4.39
+    ],
+    "IT": [
+     3.94
+    ],
+    "ES": [
+     3.6
+    ]
+   }
+  },
+  "umschlag_xl": {
+   "bis_g": [
+    960
+   ],
+   "gebuehr": {
+    "CEP": [
+     3.16
+    ],
+    "DE": [
+     3.42
+    ],
+    "FR": [
+     4.72
+    ],
+    "IT": [
+     4.17
+    ],
+    "ES": [
+     3.85
+    ]
+   }
+  },
+  "paket_klein": {
+   "bis_g": [
+    150,
+    400,
+    900,
+    1400,
+    1900,
+    3900
+   ],
+   "gebuehr": {
+    "CEP": [
+     3.12,
+     3.13,
+     3.14,
+     3.15,
+     3.17,
+     4.28
+    ],
+    "DE": [
+     3.38,
+     3.39,
+     3.4,
+     3.41,
+     3.43,
+     4.54
+    ],
+    "FR": [
+     4.56,
+     5.07,
+     5.79,
+     5.87,
+     6.1,
+     7.8
+    ],
+    "IT": [
+     4.13,
+     4.54,
+     4.95,
+     5.11,
+     5.14,
+     5.16
+    ],
+    "ES": [
+     3.52,
+     3.74,
+     3.95,
+     4.21,
+     4.27,
+     5.5
+    ]
+   }
+  },
+  "paket_standard": {
+   "bis_g": [
+    150,
+    400,
+    900,
+    1400,
+    1900,
+    2900,
+    3900,
+    5900,
+    8900,
+    11900
+   ],
+   "gebuehr": {
+    "CEP": [
+     3.13,
+     3.16,
+     3.18,
+     3.67,
+     3.69,
+     4.29,
+     4.83,
+     4.96,
+     5.77,
+     6.39
+    ],
+    "DE": [
+     3.39,
+     3.42,
+     3.44,
+     3.93,
+     3.95,
+     4.55,
+     5.09,
+     5.22,
+     6.03,
+     6.65
+    ],
+    "FR": [
+     4.58,
+     5.22,
+     6.01,
+     6.41,
+     6.44,
+     7.08,
+     7.81,
+     8.22,
+     8.84,
+     9.38
+    ],
+    "IT": [
+     4.29,
+     4.7,
+     5.15,
+     5.26,
+     5.29,
+     5.3,
+     5.35,
+     5.38,
+     5.41,
+     6.25
+    ],
+    "ES": [
+     3.55,
+     3.77,
+     3.99,
+     4.85,
+     4.94,
+     4.98,
+     5.53,
+     5.96,
+     7.24,
+     7.85
+    ]
+   }
+  },
+  "uebergroesse_klein": {
+   "basis_bis_g": 760,
+   "basis": {
+    "CEP": 4.3,
+    "DE": 4.56,
+    "FR": 7.05,
+    "IT": 7.21,
+    "ES": 5.68
+   },
+   "je_kg_darueber": {
+    "CEP": 0.18,
+    "DE": 0.18,
+    "FR": 0.2,
+    "IT": 0.08,
+    "ES": 0.04
+   }
+  },
+  "uebergroesse_std_leicht": {
+   "basis_bis_g": 760,
+   "basis": {
+    "CEP": 4.33,
+    "DE": 4.59,
+    "FR": 7.29,
+    "IT": 7.45,
+    "ES": 6.55
+   },
+   "je_kg_darueber": {
+    "CEP": 0.18,
+    "DE": 0.18,
+    "FR": 0.21,
+    "IT": 0.22,
+    "ES": 0.34
+   }
+  },
+  "uebergroesse_std_schwer": {
+   "basis_bis_g": 15760,
+   "basis": {
+    "CEP": 6.99,
+    "DE": 7.25,
+    "FR": 10.42,
+    "IT": 10.63,
+    "ES": 11.72
+   },
+   "je_kg_darueber": {
+    "CEP": 0.07,
+    "DE": 0.07,
+    "FR": 0.11,
+    "IT": 0.08,
+    "ES": 0.27
+   }
+  },
+  "uebergroesse_std_gross": {
+   "basis_bis_g": 760,
+   "basis": {
+    "CEP": 5.8,
+    "DE": 6.06,
+    "FR": 8.47,
+    "IT": 9.13,
+    "ES": 6.76
+   },
+   "je_kg_darueber": {
+    "CEP": 0.08,
+    "DE": 0.08,
+    "FR": 0.13,
+    "IT": 0.09,
+    "ES": 0.33
+   }
+  },
+  "uebergroesse_sperrig": {
+   "basis_bis_g": 760,
+   "basis": {
+    "CEP": 7.98,
+    "DE": 8.24,
+    "FR": 15.38,
+    "IT": 9.59,
+    "ES": 9.95
+   },
+   "je_kg_darueber": {
+    "CEP": 0.27,
+    "DE": 0.27,
+    "FR": 0.45,
+    "IT": 0.3,
+    "ES": 0.43
+   }
+  },
+  "uebergroesse_schwer": {
+   "basis_bis_g": 31500,
+   "basis": {
+    "CEP": 12.74,
+    "DE": 13.0,
+    "FR": 15.59,
+    "IT": 16.85,
+    "ES": 14.0
+   },
+   "je_kg_darueber": {
+    "CEP": 0.15,
+    "DE": 0.15,
+    "FR": 0.18,
+    "IT": 0.15,
+    "ES": 0.12
+   }
+  },
+  "uebergroesse_besonders": {
+   "bis_g": [
+    30000,
+    40000,
+    50000,
+    60000
+   ],
+   "gebuehr": {
+    "CEP": [
+     21.3,
+     24.19,
+     47.98,
+     51.99
+    ],
+    "DE": [
+     21.3,
+     24.19,
+     47.98,
+     51.99
+    ],
+    "FR": [
+     24.88,
+     28.77,
+     46.66,
+     50.54
+    ],
+    "IT": [
+     21.7,
+     24.1,
+     32.19,
+     32.82
+    ],
+    "ES": [
+     19.93,
+     20.8,
+     34.32,
+     36.93
+    ]
+   },
+   "je_kg_ueber_60kg": {
+    "CEP": 0.36,
+    "DE": 0.36,
+    "FR": 0.49,
+    "IT": 0.65,
+    "ES": 0.45
+   }
+  },
+  "_status": "offiziell",
+  "_quelle": "Amazon Tarifübersicht 'Gebühren für Europa', gültig ab 1. Februar 2026 (m.media-amazon.com/images/G/02/sell/images/260114-FBA-Rate-Card-DE-v1.pdf, abgerufen 22.10.2026), Seite 6",
+  "_hinweis_uebergroesse": "Zuschlag je angefangenem kg über der Basis (Annahme: angefangene kg)."
+ },
+ "fba_auswahl_kategorien": {
+  "kp1": {
+   "bis_100g": {
+    "CEP": 3.04,
+    "DE": 3.3,
+    "FR": 4.97,
+    "IT": 4.54,
+    "ES": 3.55
+   },
+   "je_weitere_100g": {
+    "CEP": 0.05,
+    "DE": 0.05,
+    "FR": 0.03,
+    "IT": 0.02,
+    "ES": 0.04
+   }
+  },
+  "kp2": {
+   "bis_100g": {
+    "CEP": 3.08,
+    "DE": 3.34,
+    "FR": 5.01,
+    "IT": 4.58,
+    "ES": 3.59
+   },
+   "je_weitere_100g": {
+    "CEP": 0.06,
+    "DE": 0.06,
+    "FR": 0.05,
+    "IT": 0.03,
+    "ES": 0.04
+   }
+  },
+  "kp3": {
+   "bis_100g": {
+    "CEP": 3.12,
+    "DE": 3.38,
+    "FR": 5.05,
+    "IT": 4.62,
+    "ES": 3.62
+   },
+   "je_weitere_100g": {
+    "CEP": 0.07,
+    "DE": 0.07,
+    "FR": 0.08,
+    "IT": 0.06,
+    "ES": 0.05
+   }
+  },
+  "mp1": {
+   "bis_100g": {
+    "CEP": 3.24,
+    "DE": 3.5,
+    "FR": 5.45,
+    "IT": 4.83,
+    "ES": 3.85
+   },
+   "je_weitere_100g": {
+    "CEP": 0.07,
+    "DE": 0.07,
+    "FR": 0.08,
+    "IT": 0.06,
+    "ES": 0.07
+   }
+  },
+  "mp2": {
+   "bis_100g": {
+    "CEP": 3.47,
+    "DE": 3.73,
+    "FR": 5.69,
+    "IT": 5.05,
+    "ES": 3.91
+   },
+   "je_weitere_100g": {
+    "CEP": 0.07,
+    "DE": 0.07,
+    "FR": 0.08,
+    "IT": 0.07,
+    "ES": 0.08
+   }
+  },
+  "gp1": {
+   "bis_100g": {
+    "CEP": 3.71,
+    "DE": 3.97,
+    "FR": 6.16,
+    "IT": 5.3,
+    "ES": 4.08
+   },
+   "je_weitere_100g": {
+    "CEP": 0.07,
+    "DE": 0.07,
+    "FR": 0.08,
+    "IT": 0.08,
+    "ES": 0.11
+   }
+  },
+  "gp2": {
+   "bis_100g": {
+    "CEP": 4.12,
+    "DE": 4.38,
+    "FR": 6.25,
+    "IT": 5.44,
+    "ES": 4.53
+   },
+   "je_weitere_100g": {
+    "CEP": 0.08,
+    "DE": 0.08,
+    "FR": 0.08,
+    "IT": 0.08,
+    "ES": 0.11
+   }
+  },
+  "_status": "offiziell",
+  "_quelle": "Amazon Tarifübersicht 'Gebühren für Europa', gültig ab 1. Februar 2026 (m.media-amazon.com/images/G/02/sell/images/260114-FBA-Rate-Card-DE-v1.pdf, abgerufen 22.10.2026), Seite 7"
+ },
+ "fba_niedrigpreis": {
+  "umschlag_leicht": {
+   "bis_g": [
+    20,
+    40,
+    60,
+    80,
+    100
+   ],
+   "gebuehr": {
+    "CEP": [
+     1.61,
+     1.64,
+     1.66,
+     1.8,
+     1.83
+    ],
+    "DE": [
+     1.87,
+     1.9,
+     1.92,
+     2.06,
+     2.09
+    ],
+    "FR": [
+     2.24,
+     2.26,
+     2.27,
+     2.79,
+     2.81
+    ],
+    "IT": [
+     2.64,
+     2.65,
+     2.67,
+     2.79,
+     2.81
+    ],
+    "ES": [
+     2.15,
+     2.21,
+     2.23,
+     2.55,
+     2.59
+    ]
+   }
+  },
+  "umschlag_standard": {
+   "bis_g": [
+    210,
+    460
+   ],
+   "gebuehr": {
+    "CEP": [
+     1.86,
+     2.02
+    ],
+    "DE": [
+     2.12,
+     2.28
+    ],
+    "FR": [
+     2.81,
+     3.31
+    ],
+    "IT": [
+     2.81,
+     3.04
+    ],
+    "ES": [
+     2.61,
+     2.85
+    ]
+   }
+  },
+  "umschlag_gross": {
+   "bis_g": [
+    960
+   ],
+   "gebuehr": {
+    "CEP": [
+     2.39
+    ],
+    "DE": [
+     2.65
+    ],
+    "FR": [
+     3.96
+    ],
+    "IT": [
+     3.35
+    ],
+    "ES": [
+     3.0
+    ]
+   }
+  },
+  "umschlag_xl": {
+   "bis_g": [
+    960
+   ],
+   "gebuehr": {
+    "CEP": [
+     2.78
+    ],
+    "DE": [
+     3.04
+    ],
+    "FR": [
+     4.31
+    ],
+    "IT": [
+     3.59
+    ],
+    "ES": [
+     3.23
+    ]
+   }
+  },
+  "paket_klein": {
+   "bis_g": [
+    150,
+    400
+   ],
+   "gebuehr": {
+    "CEP": [
+     2.78,
+     2.99
+    ],
+    "DE": [
+     3.04,
+     3.25
+    ],
+    "FR": [
+     4.31,
+     4.71
+    ],
+    "IT": [
+     3.59,
+     3.91
+    ],
+    "ES": [
+     3.23,
+     3.46
+    ]
+   }
+  },
+  "_status": "offiziell",
+  "_quelle": "Amazon Tarifübersicht 'Gebühren für Europa', gültig ab 1. Februar 2026 (m.media-amazon.com/images/G/02/sell/images/260114-FBA-Rate-Card-DE-v1.pdf, abgerufen 22.10.2026), Seite 5",
+  "preisgrenze_brutto": {
+   "standard": 20.0,
+   "reduziert": 12.0
+  },
+  "kategorien_reduziert": [
+   "schoenheit_gesundheit",
+   "biss",
+   "buerobedarf",
+   "lebensmittel",
+   "buecher",
+   "amazon_geraetezubehoer",
+   "kueche"
+  ],
+  "_hinweis": "Preis inkl. USt höchstens 20 € (12 € in Schönheit/Gesundheit, Geschäfts-/Industriebedarf, Bürobedarf, Lebensmittel, Bücher, Amazon-Gerätezubehör, Küche). Nur Stückgewicht."
+ },
+ "auswahl_kategorien": [
+  "kleidung_accessoires",
+  "schuhe",
+  "rucksaecke_handtaschen",
+  "heimtextilien",
+  "gepaeckzubehoer",
+  "matratzen",
+  "verpackungsmaterial",
+  "tierbekleidung_futter",
+  "drucker_zubehoer",
+  "arbeitshandschuhe",
+  "kinderwagen_sicherheit",
+  "tuer_fenster",
+  "augenschutz",
+  "moebelzubehoer",
+  "lebensmittel",
+  "haushaltskleber"
+ ],
+ "lager": {
+  "_status": "offiziell",
+  "_quelle": "Amazon Tarifübersicht 'Gebühren für Europa', gültig ab 1. Februar 2026 (m.media-amazon.com/images/G/02/sell/images/260114-FBA-Rate-Card-DE-v1.pdf, abgerufen 22.10.2026), Seite 16",
+  "einheit": "EUR je m³ und Monat",
+  "kleidung_standard": {
+   "jan_sep": 19.99,
+   "okt_dez": 29.23
+  },
+  "standard": {
+   "jan_sep": 27.54,
+   "okt_dez": 52.2
+  },
+  "uebergroesse": {
+   "jan_sep": 21.78,
+   "okt_dez": 34.49
+  },
+  "gefahrgut_standard": {
+   "jan_sep": 30.0,
+   "okt_dez": 50.51
+  },
+  "gefahrgut_uebergroesse": {
+   "jan_sep": 27.5,
+   "okt_dez": 43.89
+  },
+  "kleidung_kategorien": [
+   "kleidung_accessoires",
+   "brillen",
+   "schuhe",
+   "rucksaecke_handtaschen"
+  ],
+  "nutzungszuschlag_ab_wochen": 22,
+  "nutzungszuschlag_standard": [
+   [
+    28,
+    14.85
+   ],
+   [
+    36,
+    27.05
+   ],
+   [
+    44,
+    37.61
+   ],
+   [
+    52,
+    46.55
+   ],
+   [
+    9999,
+    76.87
+   ]
+  ],
+  "nutzungszuschlag_uebergroesse": [
+   [
+    28,
+    4.29
+   ],
+   [
+    36,
+    7.92
+   ],
+   [
+    44,
+    13.37
+   ],
+   [
+    52,
+    17.33
+   ],
+   [
+    9999,
+    23.1
+   ]
+  ],
+  "nutzungszuschlag_hinweis": "Kontoweiter Zuschlag (Lagerbestand ÷ Versand der letzten 13 Wochen > 22 Wochen), nicht für Kleidung/Schuhe/Taschen/Brillen und nicht für neue Verkäufer – wird nur als Hinweis ausgegeben.",
+  "veraltet_ab_tagen": 241,
+  "veraltet_eur_m3_monat": [
+   [
+    270,
+    47.99
+   ],
+   [
+    300,
+    125.16
+   ],
+   [
+    330,
+    129.92
+   ],
+   [
+    365,
+    135.98
+   ]
+  ]
+ },
+ "retouren": {
+  "bearbeitung_kleidung_anteil_fba": 0.5,
+  "bearbeitung_kleidung_kategorien": [
+   "kleidung_accessoires",
+   "schuhe"
+  ],
+  "_status": "offiziell",
+  "_quelle": "Amazon Tarifübersicht 'Gebühren für Europa', gültig ab 1. Februar 2026 (m.media-amazon.com/images/G/02/sell/images/260114-FBA-Rate-Card-DE-v1.pdf, abgerufen 22.10.2026), Seiten 20 und 27: Kleidung/Schuhe 50 % der Versandgebühr je Retoure; andere Kategorien nur bei Überschreiten der Kategorie-Retourenschwelle (Tabelle S. 20, hier nicht standardmäßig angesetzt).",
+  "erstattungsgebuehr_anteil_referral": 0.2,
+  "erstattungsgebuehr_max": 5.0,
+  "erstattungsgebuehr_status": "offiziell",
+  "erstattungsgebuehr_quelle": "sell.amazon.de/preisgestaltung (abgerufen 22.10.2026): 'Bearbeitungsgebühr für Erstattungen in Höhe von 5,00 € oder, falls niedriger, 20 % der jeweiligen Verkaufsgebühr' – Amazon erstattet die Verkaufsgebühr abzüglich dieser Gebühr."
+ },
+ "spitzenzeit": {
+  "von": "2026-10-15",
+  "bis": "2027-01-14",
+  "maerkte": [
+   "DE",
+   "DE-CEP"
+  ],
+  "zuschlag_eur": 0.27,
+  "gilt_fuer": ["paket"],
+  "ausgenommen": [
+   "uebergroesse",
+   "niedrigpreis",
+   "umschlag"
+  ],
+  "_status": "drittquelle",
+  "_quelle": "Zeitraum 15.10.2026–14.01.2027 (UK, DE) laut Amazon-Ankündigung in den Seller Forums; Höhe Ø 0,27 €/Einheit 'laut Amazon' für kleine und Standardpakete an Kunden in DE, ohne Übergröße und Niedrigpreisversand (onlinemarktplatz.de 13.10.2026, Shoplazza 07/2026). Die Tarifübersicht 'gültig ab 15. Oktober 2026' war am 22.10.2026 nicht öffentlich abrufbar; exakten Satz je ASIN im Revenue Calculator bzw. Bericht 'Gebührenvorschau für Versand durch Amazon' prüfen. Umschläge: in der Ankündigung nicht genannt, daher nicht angesetzt."
+ },
+ "referral": {
+  "_status": "offiziell",
+  "_quelle": "Amazon Tarifübersicht 'Gebühren für Europa', gültig ab 1. Februar 2026 (m.media-amazon.com/images/G/02/sell/images/260114-FBA-Rate-Card-DE-v1.pdf, abgerufen 22.10.2026), Seiten 24–26 (Spalte UK/DE/FR/IT/ES)",
+  "_basis": "Angebotspreis inkl. USt",
+  "mindestgebuehr": 0.3,
+  "_typen": "flat: Satz auf den Gesamtpreis | stufe: Satz je nach Gesamtpreis (gilt für den ganzen Preis) | anteil: Satz je Preisanteil (marginal)",
+  "kategorien": {
+   "kleidung_accessoires": {
+    "name": "Kleidung und Accessoires",
+    "typ": "stufe",
+    "stufen": [
+     [
+      15,
+      0.05
+     ],
+     [
+      20,
+      0.1
+     ],
+     [
+      45,
+      0.15
+     ]
+    ],
+    "ueber_anteil": [
+     [
+      45,
+      0.15
+     ],
+     [
+      null,
+      0.07
+     ]
+    ]
+   },
+   "brillen": {
+    "name": "Brillen",
+    "typ": "stufe",
+    "stufen": [
+     [
+      15,
+      0.08
+     ],
+     [
+      45,
+      0.15
+     ]
+    ],
+    "ueber_anteil": [
+     [
+      45,
+      0.15
+     ],
+     [
+      null,
+      0.07
+     ]
+    ]
+   },
+   "augenschutz": {
+    "name": "Augenschutz",
+    "typ": "stufe",
+    "stufen": [
+     [
+      15,
+      0.08
+     ],
+     [
+      45,
+      0.15
+     ]
+    ],
+    "ueber_anteil": [
+     [
+      45,
+      0.15
+     ],
+     [
+      null,
+      0.07
+     ]
+    ]
+   },
+   "schuhe": {
+    "name": "Schuhe",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "rucksaecke_handtaschen": {
+    "name": "Rucksäcke und Handtaschen",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "sport_outdoor": {
+    "name": "Sport und Outdoor",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "kueche": {
+    "name": "Küche",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "haushaltsprodukte": {
+    "name": "Haushaltsprodukte",
+    "typ": "stufe",
+    "stufen": [
+     [
+      20,
+      0.08
+     ],
+     [
+      null,
+      0.15
+     ]
+    ]
+   },
+   "heimtextilien": {
+    "name": "Heimtextilien und Teppiche",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "moebel": {
+    "name": "Möbel",
+    "typ": "anteil",
+    "anteile": [
+     [
+      200,
+      0.15
+     ],
+     [
+      null,
+      0.1
+     ]
+    ]
+   },
+   "moebelzubehoer": {
+    "name": "Möbelzubehör",
+    "typ": "flat",
+    "satz": 0.13
+   },
+   "rasen_garten": {
+    "name": "Rasen und Garten",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "werkzeuge": {
+    "name": "Werkzeuge und Heimwerkerbedarf",
+    "typ": "flat",
+    "satz": 0.13
+   },
+   "tuer_fenster": {
+    "name": "Tür-, Fenster- und Duschzubehör",
+    "typ": "flat",
+    "satz": 0.13
+   },
+   "haushaltskleber": {
+    "name": "Haushaltsklebstoffe und Kabelbinder",
+    "typ": "flat",
+    "satz": 0.13
+   },
+   "spielzeug": {
+    "name": "Spielzeug und Spiele",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "baby": {
+    "name": "Babyprodukte",
+    "typ": "stufe",
+    "stufen": [
+     [
+      10,
+      0.08
+     ],
+     [
+      null,
+      0.15
+     ]
+    ]
+   },
+   "kinderwagen_sicherheit": {
+    "name": "Kinderwagen und Sicherheitsausrüstung",
+    "typ": "stufe",
+    "stufen": [
+     [
+      10,
+      0.08
+     ],
+     [
+      null,
+      0.15
+     ]
+    ]
+   },
+   "schoenheit_gesundheit": {
+    "name": "Schönheit, Gesundheit und Körperpflege",
+    "typ": "stufe",
+    "stufen": [
+     [
+      10,
+      0.08
+     ],
+     [
+      null,
+      0.15
+     ]
+    ]
+   },
+   "arbeitshandschuhe": {
+    "name": "Wiederverwendbare Arbeits- und Schutzhandschuhe",
+    "typ": "stufe",
+    "stufen": [
+     [
+      10,
+      0.08
+     ],
+     [
+      null,
+      0.15
+     ]
+    ]
+   },
+   "lebensmittel": {
+    "name": "Lebensmittel und Feinkost",
+    "typ": "stufe",
+    "stufen": [
+     [
+      10,
+      0.05
+     ],
+     [
+      null,
+      0.15
+     ]
+    ]
+   },
+   "tierbekleidung_futter": {
+    "name": "Tierbekleidung und -futter",
+    "typ": "stufe",
+    "stufen": [
+     [
+      10,
+      0.05
+     ],
+     [
+      null,
+      0.15
+     ]
+    ]
+   },
+   "vitamine": {
+    "name": "Vitamine, Mineralien, Nahrungsergänzung",
+    "typ": "stufe",
+    "stufen": [
+     [
+      10,
+      0.05
+     ],
+     [
+      null,
+      0.15
+     ]
+    ]
+   },
+   "haustierzubehoer": {
+    "name": "Zubehör für Haustiere",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "elektronisches_zubehoer": {
+    "name": "Elektronisches Zubehör / Computerzubehör",
+    "typ": "anteil",
+    "anteile": [
+     [
+      100,
+      0.15
+     ],
+     [
+      null,
+      0.08
+     ]
+    ]
+   },
+   "drucker_zubehoer": {
+    "name": "Drucker- und Scannerzubehör",
+    "typ": "anteil",
+    "anteile": [
+     [
+      100,
+      0.15
+     ],
+     [
+      null,
+      0.08
+     ]
+    ]
+   },
+   "unterhaltungselektronik": {
+    "name": "Unterhaltungselektronik",
+    "typ": "flat",
+    "satz": 0.07
+   },
+   "computer": {
+    "name": "Computer",
+    "typ": "flat",
+    "satz": 0.07
+   },
+   "grossgeraete": {
+    "name": "Großgeräte",
+    "typ": "flat",
+    "satz": 0.07
+   },
+   "kompaktgeraete": {
+    "name": "Kompaktgeräte",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "gewerbliche_elektro": {
+    "name": "Gewerbliche Elektro- und Energieversorgung",
+    "typ": "flat",
+    "satz": 0.12
+   },
+   "automobil": {
+    "name": "Automobil und Motorsport (übrige Produkte)",
+    "typ": "anteil",
+    "anteile": [
+     [
+      50,
+      0.15
+     ],
+     [
+      null,
+      0.09
+     ]
+    ]
+   },
+   "fahrradzubehoer": {
+    "name": "Zubehör für den Radsport",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "gepaeck": {
+    "name": "Gepäck",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "gepaeckzubehoer": {
+    "name": "Gepäckzubehör",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "matratzen": {
+    "name": "Matratzen",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "schmuck": {
+    "name": "Schmuck",
+    "typ": "anteil",
+    "anteile": [
+     [
+      250,
+      0.2
+     ],
+     [
+      null,
+      0.05
+     ]
+    ]
+   },
+   "uhren": {
+    "name": "Uhren",
+    "typ": "anteil",
+    "anteile": [
+     [
+      250,
+      0.15
+     ],
+     [
+      null,
+      0.05
+     ]
+    ]
+   },
+   "buecher": {
+    "name": "Bücher",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "buerobedarf": {
+    "name": "Bürobedarf",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "biss": {
+    "name": "Geschäfts-, Industrie- und Wissenschaftsbedarf",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "musikinstrumente": {
+    "name": "Musikinstrumente und AV-Produktion",
+    "typ": "flat",
+    "satz": 0.12
+   },
+   "verpackungsmaterial": {
+    "name": "Verpackungsmaterial",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "software": {
+    "name": "Software",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "videospiele": {
+    "name": "Videospiele und Gaming-Zubehör",
+    "typ": "flat",
+    "satz": 0.15
+   },
+   "bier_wein": {
+    "name": "Bier, Wein und Spirituosen",
+    "typ": "flat",
+    "satz": 0.1
+   },
+   "amazon_geraetezubehoer": {
+    "name": "Amazon-Gerätezubehör",
+    "typ": "flat",
+    "satz": 0.45
+   },
+   "sonstige": {
+    "name": "Alle anderen Produkte",
+    "typ": "flat",
+    "satz": 0.15
+   }
+  }
+ },
+ "fixkosten_hinweis": "Professioneller Verkäufertarif 39 €/Monat (netto) ist Fixkosten und nicht im Deckungsbeitrag enthalten."
+}

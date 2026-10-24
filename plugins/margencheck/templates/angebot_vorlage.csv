@@ -1,0 +1,2 @@
+pos;name;ek;waehrung;menge;moq;staffel;vk_brutto;kategorie;masse_cm;gewicht_g;stueck_je_karton;karton_masse_cm;karton_kg;hs_code;zollsatz;retourenquote;monatsabsatz;teile_je_einheit;incoterm;fba_gebuehr;annahmen;notiz
+1;Beispiel: Gusseisenpfanne 26 cm;3,00;USD;300;100;300:3,00|1000:2,70;29,95;kueche;30x28x6;1700;10;62x32x32;18;7323 91;;4%;60;1;FOB;;gewicht_g,vk_brutto;Musterpreis, MOQ 100

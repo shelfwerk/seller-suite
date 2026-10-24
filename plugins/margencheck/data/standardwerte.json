@@ -1,0 +1,106 @@
+{
+ "_meta": {
+  "tabelle": "standardwerte",
+  "version": "2026-10",
+  "stand": "2026-10-22",
+  "naechste_pruefung": "2027-01-15",
+  "hinweis": "Annahmen für Fracht, Zoll-Abwicklung, Vorbereitung, Zahlungsziele und Zeiten. Jeder Wert ist mit Status gekennzeichnet; eigene Werte per /margencheck:setup in margencheck.json im Arbeitsordner überschreiben."
+ },
+ "kurse": {
+  "_status": "offiziell",
+  "_quelle": "EZB-Referenzkurs 21.10.2026 (1 EUR = 1,1234 USD = 7,4999 CNY)",
+  "EUR": 1.0,
+  "USD": 0.8902,
+  "CNY": 0.13334
+ },
+ "fracht": {
+  "see": {
+   "name": "Seefracht (LCL)",
+   "eur_je_m3": 170.0,
+   "min_m3": 1.0,
+   "tage_transit": 45,
+   "nebenkosten_je_sendung_eur": 450.0,
+   "_status": "richtwert",
+   "_quelle": "Marktübersicht LCL China → Nordeuropa (suaidglobal.com, Stand 05.10.2026): Seefracht 75–155 $/m³ + Ursprungs-CFS 15–40 $ + Zuschläge 5–40 $ + Ziel-CFS 15–40 $ = 110–275 $/m³, Mitte ≈ 190 $ = 170 €; je Sendung Abholung, Dokumente, Verzollung, Zustellung 300–1.200 $, unteres Mittel ≈ 450 €. Mindestabrechnung meist 1 m³. Kein offizieller Tarif – Spediteur-Angebot eintragen."
+  },
+  "bahn": {
+   "name": "Bahn China–EU",
+   "usd_je_m3": 450.0,
+   "min_usd": 525.0,
+   "tage_transit": 30,
+   "nebenkosten_je_sendung_eur": 150.0,
+   "_status": "praxiswert",
+   "_quelle": "Praxiswert eines DE-FBA-Sellers 08/2026: ca. 450 $/m³, Mindestabrechnung ca. 525 $ (Annahme: Haus-zu-Haus-Angebot des Spediteurs); Nebenkosten je Sendung 150 € (Verzollung/Avis) als Annahme"
+  },
+  "luft": {
+   "name": "Luftfracht",
+   "usd_je_kg": 6.5,
+   "volumen_teiler": 6000,
+   "tage_transit": 10,
+   "nebenkosten_je_sendung_eur": 100.0,
+   "_status": "praxiswert",
+   "_quelle": "Praxiswert eines DE-FBA-Sellers 08/2026: ca. 6,50 $/kg frachtpflichtig, Volumengewicht = m³ × 1.000.000 ÷ 6000; Nebenkosten je Sendung 100 € (Verzollung) als Annahme"
+  }
+ },
+ "sendung": {
+  "packfaktor_volumen": 1.15,
+  "zuschlag_m3": 0.05,
+  "packfaktor_gewicht": 1.05,
+  "karton_kg_je_m3": 25.0,
+  "nebenkosten_je_sendung_eur": 75.0,
+  "versicherung_anteil": 0.0,
+  "_status": "annahme",
+  "_hinweis": "Ohne Packliste wird das Sendungsvolumen aus Packmaß × Menge × 1,15 + 0,05 m³ geschätzt; Bruttogewicht = Stückgewicht × Menge × 1,05 + Karton. Nebenkosten je Sendung stehen je Frachtart unter fracht.<modus>.nebenkosten_je_sendung_eur; dieser Wert gilt nur, wenn dort nichts steht."
+ },
+ "zoll": {
+  "standard_satz": 0.12,
+  "zollwert": "CIF",
+  "fracht_anteil_im_zollwert": 1.0,
+  "eust": {
+   "DE": 0.19,
+   "AT": 0.2,
+   "FR": 0.2,
+   "IT": 0.22,
+   "ES": 0.21,
+   "NL": 0.21
+  },
+  "eust_abziehbar": true,
+  "eust_erstattung_tage": 40,
+  "_status": "annahme",
+  "_hinweis": "Zollwert = CIF (Ware + Fracht bis zur EU-Grenze, hier konservativ die ganze Fracht). EUSt = (Zollwert + Zoll) × Satz; als Vorsteuer abziehbar, wenn die Einfuhr auf die eigene EORI läuft – dann nur Kapitalbindung, sonst Kosten. Ohne HS-Code wird mit 12 % gerechnet (konservativ)."
+ },
+ "vorbereitung": {
+  "etikett_je_teil": 0.12,
+  "set_verpackung_je_set": 0.06,
+  "inbound_je_einheit": 0.1,
+  "inbound_je_kg": 0.1,
+  "_status": "praxiswert",
+  "_quelle": "Etikett 0,12 €, Set 0,06 €, Inbound 0,10 € je Einheit: Praxiswerte eines DE-FBA-Sellers 08/2026; Inbound je kg: Annahme für schwere Ware"
+ },
+ "zeiten": {
+  "produktion_tage": 30,
+  "inbound_tage": 10,
+  "auszahlung_tage": 21,
+  "anzahlung_anteil": 0.3,
+  "_status": "annahme",
+  "_hinweis": "Anzahlung bei Bestellung, Rest vor Versand; Amazon zahlt alle 14 Tage aus, mit 7 Tagen Reserve nach Zustellung (≈ 21 Tage nach Verkauf); Shopify Payments ≈ 3 Tage.",
+  "auszahlung_tage_shopify": 3
+ },
+ "planung": {
+  "tacos_plan": 0.15,
+  "retourenquote": 0.05,
+  "unverkaeuflich_anteil": 0.15,
+  "monatsabsatz": null,
+  "reichweite_monate_max": 4,
+  "_status": "annahme",
+  "_hinweis": "Plan-Werbeanteil 15 %, Retourenquote 5 % und 15 % unverkäuflich, wenn je Position nichts angegeben ist; Mengenempfehlung bis 4 Monate Reichweite."
+ },
+ "entscheidung": {
+  "go_be_tacos": 0.4,
+  "test_be_tacos": 0.25,
+  "min_db_eur": 1.0,
+  "min_marge": 0.1,
+  "_quelle": "Raster aus der Sourcing-Praxis: BE-TACOS < 25 % = Marge ist der Engpass, 25–40 % tragfähig, > 40 % Marge kein Engpass",
+  "_status": "methode"
+ }
+}

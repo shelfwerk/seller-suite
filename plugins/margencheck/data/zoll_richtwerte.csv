@@ -1,0 +1,19 @@
+hs_code;warengruppe;zollsatz;status;hinweis
+6117 80;Bekleidungszubehör gewirkt (Stirnband, Schweißband, Schal);0.12;praxiswert;Praxisfall 08/2026 – Alternative 6505 00 90 (2,7 %) bei Kopfbedeckungen – ZTA klären
+6505 00 90;Hüte und andere Kopfbedeckungen gewirkt (Mütze, Haube);0.027;praxiswert;Praxisfall 08/2026
+6115;Strumpfwaren, Socken gewirkt;0.12;richtwert;TARIC prüfen
+6109;T-Shirts, Unterhemden gewirkt;0.12;richtwert;TARIC prüfen
+6110;Pullover, Strickjacken, Sweatshirts gewirkt;0.12;richtwert;TARIC prüfen
+6302;Bett-, Tisch-, Toiletten- und Küchenwäsche;0.12;richtwert;TARIC prüfen
+6307 90;Andere konfektionierte Spinnstoffwaren;0.063;richtwert;TARIC prüfen
+7323 91;Haushaltsartikel aus Gusseisen, nicht emailliert;0.032;annahme;Praxisfall 09/2026 – TARIC lieferte keine Zahl, ZTA beantragen
+7323 92;Haushaltsartikel aus Gusseisen, emailliert;0.032;annahme;wie 7323 91
+7323 93;Haushaltsartikel aus nichtrostendem Stahl;0.032;richtwert;TARIC prüfen
+7321;Koch- und Heizgeräte aus Eisen/Stahl, nicht elektrisch (z. B. Öfen);0.027;richtwert;TARIC prüfen
+3924 10;Geschirr und Küchenartikel aus Kunststoff;0.065;richtwert;TARIC prüfen
+3926 90;Andere Waren aus Kunststoff;0.065;richtwert;TARIC prüfen
+9506 91;Geräte für Gymnastik, Fitness, Athletik;0.027;richtwert;TARIC prüfen
+9506 99;Andere Sport- und Freizeitartikel;0.027;richtwert;TARIC prüfen
+9404 90;Kissen, Bettwaren;0.037;richtwert;TARIC prüfen
+4202 92;Taschen mit Außenseite aus Kunststofffolie oder Spinnstoff;0.037;richtwert;TARIC prüfen (Unterpositionen bis 9,7 %)
+9503 00;Spielzeug;0.047;richtwert;TARIC prüfen – viele Spielzeuge 0–4,7 %

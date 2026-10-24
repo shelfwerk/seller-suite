@@ -1,0 +1,2 @@
+# ASINs, die im öffentlichen Repo vorkommen dürfen (nur erfundene Demo-ASINs), eine pro Zeile.
+# Platzhalter wie B0XXXXXXXX und B0YYYYYYYY sind immer erlaubt.

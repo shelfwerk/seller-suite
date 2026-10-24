@@ -1,0 +1,32 @@
+{
+ "_meta": {
+  "tabelle": "shopify_de",
+  "version": "2026-10",
+  "stand": "2026-10-22",
+  "naechste_pruefung": "2027-04-01",
+  "quelle": "shopify.com/de/preise (abgerufen 22.10.2026) für Tarife und Shopify-Payments-Sätze; PayPal/Klarna aus Drittquellen (qualimero.com, 2026)",
+  "hinweis": "Shopify-Zahlungsgebühren werden auf den Bruttobetrag der Bestellung (inkl. Versand) berechnet. Versand- und Verpackungskosten sind Beispielwerte – eigene Konditionen per /margencheck:setup eintragen."
+ },
+ "tarife": {
+  "_status": "offiziell",
+  "basic":    {"name": "Basic",    "eur_monat": 32,  "karte_prozent": 0.020, "karte_fix": 0.25, "intl_prozent": 0.035, "fremdanbieter_aufschlag": 0.020},
+  "grow":     {"name": "Grow",     "eur_monat": 92,  "karte_prozent": 0.019, "karte_fix": 0.25, "intl_prozent": 0.034, "fremdanbieter_aufschlag": 0.010},
+  "advanced": {"name": "Advanced", "eur_monat": 384, "karte_prozent": 0.017, "karte_fix": 0.25, "intl_prozent": 0.032, "fremdanbieter_aufschlag": 0.006},
+  "plus":     {"name": "Plus",     "eur_monat": 2100,"karte_prozent": 0.015, "karte_fix": 0.25, "intl_prozent": 0.030, "fremdanbieter_aufschlag": 0.002}
+ },
+ "zahlarten": {
+  "karte":  {"name": "Shopify Payments (Karte, Apple/Google Pay)", "quelle": "tarif", "_status": "offiziell"},
+  "paypal": {"name": "PayPal", "prozent": 0.0249, "fix": 0.35, "fremdanbieter": true, "_status": "drittquelle"},
+  "klarna": {"name": "Klarna", "prozent": 0.0299, "fix": 0.35, "fremdanbieter": false, "_status": "drittquelle"}
+ },
+ "zahlarten_mix_standard": {"karte": 0.6, "paypal": 0.3, "klarna": 0.1},
+ "versand_eigen": {
+  "_status": "annahme",
+  "_hinweis": "Beispielwerte netto je Paket (Geschäftskunden-Niveau DE) – durch eigene Konditionen ersetzen.",
+  "bis_kg": [[1, 4.50], [2, 5.20], [5, 6.50], [10, 8.50], [31.5, 13.50]],
+  "verpackung_je_bestellung": 0.40,
+  "pick_pack_je_bestellung": 0.00
+ },
+ "kunde_zahlt_versand_brutto": 0.0,
+ "fixkosten_hinweis": "Shopify-Monatstarif, Apps und Theme sind Fixkosten und nicht im Deckungsbeitrag enthalten."
+}

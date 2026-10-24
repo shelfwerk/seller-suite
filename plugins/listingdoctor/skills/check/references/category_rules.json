@@ -1,0 +1,1136 @@
+{
+ "_meta": {
+  "title": "ListingDoctor – category word lists (proposal)",
+  "as_of": "2026-10-22",
+  "rules_reference": "code/shared/references/rules.md section 10 (IDs CB*, CE*, CT*, CF*, CA*)",
+  "status": "proposal, not yet wired into ld_rules.py · integrated in ListingDoctor 1.1.0 (message_de added, CB7-inci-missing added)",
+  "matching": "case-insensitive, Unicode NFC, whole phrase on word boundaries; hyphen/space variants are listed explicitly; regex = Python re with re.IGNORECASE unless 'case_sensitive': true",
+  "fields": "item_name, title_differentiation (Item Highlights), bullet_point1-5, product_description; generic_keyword for CF9 disease/drug terms",
+  "language_market": "en lists target amazon.com (US law + Amazon US policy); de lists target amazon.de / EU law. English text on an EU store: run the en lists as warning only.",
+  "global_lists": "The section-5 lists in ld_rules.py (PROMO_*, HEALTH, ECO, EVIDENCE, SUBJECTIVE) still apply to every category. Phrases already there are not repeated here (e.g. 'fda approved', 'clinically proven', 'detox', 'immune system', 'hypoallergenic', 'klinisch getestet', 'stärkt das immunsystem', 'behandelt', 'heilt').",
+  "category_detection": "1) product_type of the category listing report (uppercase, e.g. HAIRBAND in a real 2026 DE report); 2) fallback product_words for pasted text, like TEXTILE_WORDS.",
+  "product_types_note": "Product-type names are partly unverified: SKIN_MOISTURIZER and HAIR_STYLING_AGENT seen in a seller forum, the rest from Amazon naming conventions. Verify with the SP-API Product Type Definitions API (searchDefinitionsProductTypes) or real reports; unknown names simply never match.",
+  "conditional_semantics": "A 'conditional' block is only evaluated if at least one 'if_any' phrase occurs in the listing text.",
+  "pattern_semantics": "pattern: hit if 'regex' matches; if 'requires_missing' is set, hit only if that regex does NOT match anywhere in the listing; if 'if_regex' is set, both must match.",
+  "disclaimer": "Checklist, not legal advice."
+ },
+ "beauty": {
+  "product_types": [
+   "BEAUTY",
+   "SKIN_CARE_AGENT",
+   "SKIN_CLEANING_AGENT",
+   "SKIN_MOISTURIZER",
+   "SKIN_SERUM",
+   "SKIN_TREATMENT_MASK",
+   "SKIN_EXFOLIANT",
+   "SUNSCREEN",
+   "SHAMPOO",
+   "HAIR_CONDITIONER",
+   "HAIR_STYLING_AGENT",
+   "HAIR_COLORING_AGENT",
+   "BODY_WASH",
+   "DEODORANT",
+   "FRAGRANCE",
+   "LIP_BALM",
+   "LIP_COLOR",
+   "MASCARA",
+   "EYELINER",
+   "EYESHADOW",
+   "FOUNDATION",
+   "BLUSH",
+   "NAIL_POLISH",
+   "TOOTHPASTE",
+   "SHAVING_AGENT"
+  ],
+  "product_words": {
+   "en": [
+    "face cream",
+    "moisturizer",
+    "moisturiser",
+    "serum",
+    "sunscreen",
+    "shampoo",
+    "conditioner",
+    "body lotion",
+    "face mask",
+    "cleanser",
+    "toner",
+    "deodorant",
+    "perfume",
+    "lipstick",
+    "mascara",
+    "nail polish",
+    "hair oil",
+    "beard oil",
+    "skincare",
+    "skin care"
+   ],
+   "de": [
+    "gesichtscreme",
+    "feuchtigkeitscreme",
+    "tagescreme",
+    "nachtcreme",
+    "serum",
+    "sonnencreme",
+    "sonnenschutz",
+    "shampoo",
+    "spülung",
+    "haarkur",
+    "bodylotion",
+    "körperlotion",
+    "gesichtsmaske",
+    "reinigungsgel",
+    "gesichtswasser",
+    "deo",
+    "deodorant",
+    "parfüm",
+    "lippenstift",
+    "wimperntusche",
+    "nagellack",
+    "haaröl",
+    "bartöl",
+    "hautpflege",
+    "kosmetik"
+   ]
+  },
+  "error": {
+   "rules": [
+    "CB1",
+    "CB3",
+    "CB5",
+    "CB11"
+   ],
+   "en": [
+    "treats eczema",
+    "cures eczema",
+    "eczema treatment",
+    "treats psoriasis",
+    "psoriasis treatment",
+    "treats rosacea",
+    "treats dermatitis",
+    "cures acne",
+    "regrows hair",
+    "hair regrowth",
+    "restores hair growth",
+    "stops hair loss",
+    "reverses hair loss",
+    "removes cellulite",
+    "eliminates cellulite",
+    "regenerates cells",
+    "repairs dna",
+    "stimulates collagen production",
+    "increases melanin",
+    "cbd",
+    "cannabidiol",
+    "full spectrum hemp",
+    "full-spectrum hemp"
+   ],
+   "de": [
+    "behördlich zugelassen",
+    "behördlich geprüft",
+    "eu-zugelassen",
+    "von der eu zugelassen",
+    "dermatologisch zugelassen",
+    "frei von kortison",
+    "ohne kortison",
+    "kortisonfrei",
+    "cortisonfrei",
+    "quecksilberfrei",
+    "frei von quecksilber",
+    "allergiefrei",
+    "frei von allergenen",
+    "gegen neurodermitis",
+    "gegen schuppenflechte",
+    "gegen psoriasis",
+    "gegen rosazea",
+    "gegen ekzeme",
+    "lässt haare nachwachsen",
+    "haarwuchsmittel",
+    "stoppt haarausfall",
+    "heilt akne"
+   ]
+  },
+  "warning": {
+   "rules": [
+    "CB2",
+    "CB3",
+    "CB4",
+    "CB5",
+    "CB8",
+    "CB9",
+    "CB10",
+    "CB11"
+   ],
+   "en": [
+    "dermatologist tested",
+    "dermatologist-tested",
+    "dermatologist approved",
+    "dermatologist recommended",
+    "dermatologically tested",
+    "dermatologically approved",
+    "clinically tested",
+    "ophthalmologist tested",
+    "allergy tested",
+    "allergy-free",
+    "allergy free",
+    "non-allergenic",
+    "acne treatment",
+    "treats acne",
+    "clears acne",
+    "anti-acne",
+    "anti-dandruff",
+    "dandruff treatment",
+    "skin lightening",
+    "skin whitening",
+    "skin bleaching",
+    "bleaching cream",
+    "anti-cellulite",
+    "reduces cellulite",
+    "hair growth",
+    "organic",
+    "certified organic",
+    "usda organic",
+    "botox"
+   ],
+   "de": [
+    "dermatologisch getestet",
+    "dermatologisch bestätigt",
+    "dermatologisch geprüft",
+    "dermatologisch empfohlen",
+    "von dermatologen empfohlen",
+    "augenärztlich getestet",
+    "ophthalmologisch getestet",
+    "allergiegetestet",
+    "parabenfrei",
+    "frei von parabenen",
+    "ohne parabene",
+    "ohne konservierungsstoffe",
+    "frei von konservierungsstoffen",
+    "gegen akne",
+    "bei akne",
+    "anti-akne",
+    "gegen haarausfall",
+    "gegen cellulite",
+    "anti-cellulite",
+    "hautaufhellung",
+    "hautaufhellend",
+    "bleichcreme",
+    "naturkosmetik",
+    "bio-kosmetik",
+    "biokosmetik",
+    "zertifizierte naturkosmetik",
+    "ohne tierversuche",
+    "tierversuchsfrei",
+    "botox",
+    "cbd",
+    "cannabidiol"
+   ]
+  },
+  "conditional": [
+   {
+    "id": "CB6-sunscreen",
+    "rules": [
+     "CB6"
+    ],
+    "if_any": [
+     "spf",
+     "lsf",
+     "lichtschutzfaktor",
+     "sunscreen",
+     "sun screen",
+     "sun protection",
+     "sonnenschutz",
+     "sonnencreme",
+     "sonnenspray",
+     "uv-schutz",
+     "uv protection"
+    ],
+    "error": {
+     "en": [
+      "sunblock",
+      "sun block",
+      "sweatproof",
+      "sweat proof",
+      "sweat-proof",
+      "waterproof",
+      "water proof",
+      "water-proof",
+      "all day protection",
+      "all-day protection"
+     ],
+     "de": [
+      "sunblocker",
+      "sunblock",
+      "totaler sonnenschutz",
+      "vollschutz",
+      "100 % uv-schutz",
+      "100% uv-schutz",
+      "100 % schutz",
+      "100% schutz",
+      "ganztägiger schutz",
+      "den ganzen tag geschützt",
+      "kein nachcremen",
+      "muss nicht erneut aufgetragen werden"
+     ]
+    },
+    "warning": {
+     "en": [
+      "instant protection",
+      "broad spectrum"
+     ],
+     "de": [
+      "wasserfest",
+      "sofortschutz"
+     ]
+    },
+    "note": "'broad spectrum' (US) is allowed only with the FDA test; 'wasserfest' (EU) only with water-resistance test – warn to check evidence."
+   }
+  ],
+  "patterns": [
+   {
+    "id": "CB6-eu-spf-over-50",
+    "rules": [
+     "CB6"
+    ],
+    "severity": "error",
+    "markets": [
+     "EU"
+    ],
+    "regex": "\\b(?:spf|lsf|lichtschutzfaktor)\\s*(?:5[1-9]|[6-9]\\d|[1-9]\\d{2})\\b",
+    "message": "EU: highest labelled value is 'LSF/SPF 50+'",
+    "message_de": "EU: höchster zulässiger Wert ist „LSF 50+“"
+   },
+   {
+    "id": "CB6-us-water-resistant-time",
+    "rules": [
+     "CB6"
+    ],
+    "severity": "warning",
+    "markets": [
+     "US"
+    ],
+    "regex": "\\bwater[- ]?resistant\\b(?!\\s*\\(?\\s*(?:40|80)\\s*min)",
+    "only_if_conditional": "CB6-sunscreen",
+    "message": "US: only 'Water Resistant (40 minutes)' or '(80 minutes)'",
+    "message_de": "US: nur „Water Resistant (40 minutes)“ oder „(80 minutes)“ erlaubt"
+   },
+   {
+    "id": "CB10-hydroquinone",
+    "rules": [
+     "CB10",
+     "CB1"
+    ],
+    "severity": "error",
+    "markets": [
+     "US",
+     "EU"
+    ],
+    "regex": "\\bhydro(?:quinone|chinon)\\b(?![\\s-]*(?:free|frei))",
+    "message": "Hydroquinone: unapproved OTC drug (US), banned in EU cosmetics; Amazon requires adulterant testing for lighteners",
+    "message_de": "Hydrochinon: in EU-Kosmetik verboten, in den USA nicht zugelassenes OTC-Arzneimittel; Amazon verlangt Prüfberichte für Aufheller"
+   },
+   {
+    "id": "CB7-inci-missing",
+    "rules": [
+     "CB7"
+    ],
+    "severity": "info",
+    "markets": [
+     "EU"
+    ],
+    "regex": ".",
+    "requires_missing": "\\binci\\b|inhaltsstoffe|ingredients|\\baqua\\b|\\bglycerin\\b",
+    "also_ok_if_attribute_filled": [
+     "ingredients"
+    ],
+    "message": "No INCI ingredient list in the text – EU cosmetics need the full list in the offer (attribute or image is fine)",
+    "message_de": "Keine INCI-Liste im Text – EU-Kosmetik braucht die vollständige Inhaltsstoffliste im Angebot (Attribut oder Bild genügt)"
+   }
+  ],
+  "required_info_hint": "DE/EU: full INCI ingredient list in the offer (CB7); responsible person + manufacturer contact (GPSR G1); sunscreen: SPF category 6–50+ and UVA logo (CB6). US: SPF, acne, dandruff or antiperspirant claims make the product an OTC drug – Drug Facts image required (CB5/CB6); 'organic' needs USDA certificate naming the certifier (CB8); skin lighteners need third-party test documents in Manage your compliance (CB10).",
+  "required_info_hint_de": "DE/EU: vollständige INCI-Liste im Angebot (CB7); verantwortliche Person + Herstellerkontakt (GPSR G1); Sonnenschutz: LSF-Kategorie 6–50+ und UVA-Logo (CB6). US: SPF-, Akne-, Schuppen- oder Antitranspirant-Aussagen machen das Produkt zum OTC-Arzneimittel – Drug-Facts-Bild nötig; 'organic' nur mit USDA-Zertifikat; Aufheller nur mit Prüfdokumenten."
+ },
+ "electronics": {
+  "product_types": [
+   "CELLULAR_PHONE",
+   "CELLULAR_PHONE_CASE",
+   "SCREEN_PROTECTOR",
+   "PORTABLE_ELECTRONIC_DEVICE_COVER",
+   "PORTABLE_ELECTRONIC_DEVICE_STAND",
+   "POWER_BANK",
+   "BATTERY",
+   "BATTERY_CHARGER",
+   "CHARGING_ADAPTER",
+   "POWER_SUPPLY",
+   "ELECTRONIC_CABLE",
+   "ELECTRONIC_ADAPTER",
+   "HEADPHONES",
+   "SPEAKERS",
+   "TELEVISION",
+   "MONITOR",
+   "NOTEBOOK_COMPUTER",
+   "TABLET_COMPUTER",
+   "COMPUTER",
+   "KEYBOARDS",
+   "SECURITY_CAMERA",
+   "VIDEO_GAME_CONSOLE",
+   "VIDEO_GAME_ACCESSORIES",
+   "LIGHT_BULB",
+   "LIGHT_FIXTURE",
+   "FLASHLIGHT",
+   "CONSUMER_ELECTRONICS",
+   "WIRELESS_ACCESSORY"
+  ],
+  "product_words": {
+   "en": [
+    "charger",
+    "charging cable",
+    "power bank",
+    "powerbank",
+    "usb-c cable",
+    "adapter",
+    "headphones",
+    "earbuds",
+    "speaker",
+    "phone case",
+    "screen protector",
+    "battery",
+    "bluetooth",
+    "led bulb",
+    "keyboard",
+    "mouse",
+    "monitor",
+    "smartwatch"
+   ],
+   "de": [
+    "ladegerät",
+    "netzteil",
+    "ladekabel",
+    "powerbank",
+    "kabel",
+    "adapter",
+    "kopfhörer",
+    "lautsprecher",
+    "handyhülle",
+    "schutzhülle",
+    "panzerglas",
+    "displayschutz",
+    "schutzfolie",
+    "akku",
+    "batterie",
+    "bluetooth",
+    "led-lampe",
+    "leuchtmittel",
+    "tastatur",
+    "maus",
+    "monitor",
+    "smartwatch"
+   ]
+  },
+  "error": {
+   "rules": [
+    "CE1",
+    "CE2",
+    "CE7"
+   ],
+   "en": [
+    "original apple",
+    "genuine apple",
+    "apple original",
+    "original samsung",
+    "genuine samsung",
+    "samsung original",
+    "fda certified",
+    "fda-certified",
+    "fda registered",
+    "fda-registered",
+    "fda listed",
+    "1:1 replica",
+    "1:1 copy"
+   ],
+   "de": [
+    "original apple",
+    "apple original",
+    "original samsung",
+    "samsung original",
+    "fda-zertifiziert",
+    "fda zertifiziert",
+    "fda-registriert",
+    "fda registriert",
+    "1:1 kopie",
+    "1:1 nachbau",
+    "1:1 replik"
+   ]
+  },
+  "warning": {
+   "rules": [
+    "CE1",
+    "CE2",
+    "CE8",
+    "CE9",
+    "CE10",
+    "E4"
+   ],
+   "en": [
+    "military grade",
+    "military-grade",
+    "mil-std-810",
+    "mil-std-810g",
+    "mil-std-810h",
+    "made for iphone",
+    "mfi certified",
+    "mfi-certified",
+    "apple mfi",
+    "apple certified",
+    "samsung certified",
+    "works with alexa",
+    "qi certified",
+    "qi-certified",
+    "usb-if certified",
+    "oem",
+    "replica",
+    "compatible with all",
+    "works with all devices",
+    "pmpo",
+    "peak power"
+   ],
+   "de": [
+    "militärstandard",
+    "militärqualität",
+    "military grade",
+    "mil-std-810",
+    "mil-std-810g",
+    "mil-std-810h",
+    "made for iphone",
+    "mfi-zertifiziert",
+    "mfi zertifiziert",
+    "apple-zertifiziert",
+    "qi-zertifiziert",
+    "nachbau",
+    "kompatibel mit allen",
+    "für alle geräte",
+    "pmpo",
+    "spitzenleistung",
+    "tüv geprüft",
+    "tüv-geprüft",
+    "gs geprüft",
+    "gs-geprüft",
+    "lga tested",
+    "ce-zertifiziert",
+    "ce zertifiziert",
+    "ce-geprüft",
+    "ce geprüft",
+    "ce-konform",
+    "rohs-konform",
+    "rohs-zertifiziert"
+   ]
+  },
+  "brand_reference_check": {
+   "rules": [
+    "CE1"
+   ],
+   "severity": "error",
+   "fields": [
+    "item_name",
+    "title_differentiation"
+   ],
+   "logic": "For each third-party brand found (and brand field != that brand): a connector must end within the 3 tokens before it, or 'kompatibel'/'compatible' must directly follow it (e.g. 'MagSafe-kompatibel'). Otherwise error. Never allowed in the brand field.",
+   "third_party_brands": [
+    "apple",
+    "iphone",
+    "ipad",
+    "macbook",
+    "airpods",
+    "apple watch",
+    "magsafe",
+    "lightning",
+    "samsung",
+    "galaxy",
+    "google pixel",
+    "huawei",
+    "xiaomi",
+    "sony",
+    "playstation",
+    "ps5",
+    "ps4",
+    "xbox",
+    "nintendo switch",
+    "kindle",
+    "fire tv",
+    "echo dot",
+    "alexa",
+    "gopro",
+    "dyson",
+    "garmin",
+    "fitbit",
+    "logitech",
+    "dji",
+    "nespresso",
+    "dolce gusto",
+    "thermomix",
+    "philips hue",
+    "tesla"
+   ],
+   "connectors": {
+    "en": [
+     "for",
+     "compatible with",
+     "fits",
+     "intended for",
+     "works with",
+     "replacement for",
+     "designed for"
+    ],
+    "de": [
+     "für",
+     "kompatibel mit",
+     "passend für",
+     "geeignet für",
+     "ersatz für",
+     "passt zu",
+     "zur verwendung mit"
+    ]
+   }
+  },
+  "patterns": [
+   {
+    "id": "CE9-powerbank-wh",
+    "rules": [
+     "CE9"
+    ],
+    "severity": "info",
+    "markets": [
+     "US",
+     "EU"
+    ],
+    "if_regex": "\\b(?:power ?bank|akku-?pack|externer akku)\\b",
+    "regex": "\\b\\d{3,6}\\s?mah\\b",
+    "requires_missing": "\\b\\d+(?:[.,]\\d+)?\\s?wh\\b",
+    "message": "Power bank: state rated capacity in mAh and Wh (> 100 Wh = dangerous goods review)",
+    "message_de": "Powerbank: Nennkapazität in mAh und Wh angeben (> 100 Wh = Gefahrgutprüfung)"
+   },
+   {
+    "id": "CE9-powerbank-implausible",
+    "rules": [
+     "CE9"
+    ],
+    "severity": "info",
+    "markets": [
+     "US",
+     "EU"
+    ],
+    "if_regex": "\\b(?:power ?bank|akku-?pack)\\b",
+    "regex": "\\b(?:[5-9]\\d{4}|\\d{6})\\s?mah\\b",
+    "message": "≥ 50,000 mAh – check that the capacity claim is realistic and substantiated",
+    "message_de": "≥ 50.000 mAh – prüfen, ob die Kapazitätsangabe realistisch und belegt ist"
+   },
+   {
+    "id": "CE3-weee-number-format",
+    "rules": [
+     "CE3"
+    ],
+    "severity": "info",
+    "markets": [
+     "EU"
+    ],
+    "regex": "\\bweee[- ]?reg\\.?[- ]?nr\\.?\\s*:?\\s*(?!DE\\s?\\d{8}\\b)\\S+",
+    "message": "WEEE-Reg.-Nr. format is 'DE' + 8 digits",
+    "message_de": "WEEE-Reg.-Nr. hat das Format „DE“ + 8 Ziffern"
+   }
+  ],
+  "required_info_hint": "amazon.de: producer's WEEE registration number (DE + 8 digits) in Amazon's EPR compliance section, offers of unregistered producers are blocked (CE3); batteries or devices with batteries: registered producer + take-back notice with crossed-out wheelie bin (CE4); energy-labelled groups incl. smartphones/tablets: EPREL no., efficiency class, label image + product information sheet (CE5); phones, tablets, headphones, speakers, keyboards, mice, cameras, consoles, laptops: common-charger pictogram + power label next to the price (CE6); accessories: '[own brand] [product] für/for [Brand Model]' (CE1).",
+  "required_info_hint_de": "amazon.de: WEEE-Reg.-Nr. des Herstellers (DE + 8 Ziffern) im EPR-Bereich (CE3); Batterien/Geräte mit Batterie: registrierter Hersteller + Rücknahmehinweis mit Mülltonnensymbol (CE4); energielabelpflichtige Gruppen inkl. Smartphones/Tablets: EPREL-Nr., Klasse, Label-Bild + Datenblatt (CE5); Handys, Tablets, Kopfhörer, Lautsprecher, Tastaturen, Mäuse, Kameras, Konsolen, Laptops: Ladegerät-Piktogramm + Leistungsetikett beim Preis (CE6); Zubehör: '[eigene Marke] [Produkt] für [Marke Modell]' (CE1)."
+ },
+ "toys": {
+  "product_types": [
+   "TOY",
+   "TOY_FIGURE",
+   "TOY_BUILDING_BLOCK",
+   "BUILDING_SET",
+   "PUZZLES",
+   "BOARD_GAME",
+   "DOLL",
+   "STUFFED_ANIMAL",
+   "TOY_VEHICLE",
+   "TOY_GUN",
+   "BALLOON",
+   "RIDE_ON_TOY",
+   "KITE",
+   "EDUCATIONAL_TOY",
+   "TOY_SLIME",
+   "BATH_TOY",
+   "MUSICAL_INSTRUMENT_TOY"
+  ],
+  "product_words": {
+   "en": [
+    "toy",
+    "toys",
+    "plush",
+    "stuffed animal",
+    "doll",
+    "building blocks",
+    "building set",
+    "puzzle",
+    "board game",
+    "action figure",
+    "rattle",
+    "playset",
+    "slime",
+    "toy car",
+    "balloons"
+   ],
+   "de": [
+    "spielzeug",
+    "kinderspielzeug",
+    "plüschtier",
+    "kuscheltier",
+    "puppe",
+    "bausteine",
+    "baukasten",
+    "puzzle",
+    "brettspiel",
+    "spielfigur",
+    "rassel",
+    "spielset",
+    "schleim",
+    "knete",
+    "spielzeugauto",
+    "luftballons"
+   ]
+  },
+  "error": {
+   "rules": [
+    "CT4",
+    "CE2"
+   ],
+   "en": [
+    "1:1 replica"
+   ],
+   "de": [
+    "1:1 nachbau"
+   ]
+  },
+  "warning": {
+   "rules": [
+    "CT8",
+    "CE10",
+    "E4",
+    "C6"
+   ],
+   "en": [
+    "cpsc approved",
+    "cpsc-approved",
+    "cpsc certified",
+    "cpsc-certified",
+    "en71 certified",
+    "en 71 certified",
+    "astm certified",
+    "child safe",
+    "child-safe",
+    "kid safe",
+    "kid-safe",
+    "baby safe",
+    "baby-safe",
+    "safe for babies",
+    "safe for toddlers"
+   ],
+   "de": [
+    "kindersicher",
+    "babysicher",
+    "unbedenklich für kinder",
+    "en71 zertifiziert",
+    "en 71 zertifiziert",
+    "en71-zertifiziert",
+    "ce-zertifiziert",
+    "ce zertifiziert",
+    "ce-geprüft",
+    "ce geprüft",
+    "tüv geprüft",
+    "tüv-geprüft",
+    "gs geprüft",
+    "gs-geprüft"
+   ]
+  },
+  "patterns": [
+   {
+    "id": "CT4-under3-contradiction",
+    "rules": [
+     "CT4"
+    ],
+    "severity": "error",
+    "markets": [
+     "EU",
+     "US"
+    ],
+    "if_regex": "\\b(?:ab|from)\\s*(?:0|[1-9]|[12]\\d|3[0-5])\\s*(?:monat(?:en)?|months?|m)\\b|\\b(?:[0-9]|[12]\\d|3[0-5])\\s*(?:m|monate?n?|months?)\\s*\\+|\\b0\\s*\\+|\\bab\\s*[12]\\s*jahr(?:en)?\\b|\\bages?\\s*[0-2]\\s*(?:\\+|and up|-|to)|\\bbaby\\s?spielzeug\\b|\\bbaby toy\\b|\\bfor babies\\b",
+    "regex": "nicht\\s+(?:geeignet\\s+)?f(?:ü|ue)r\\s+kinder\\s+unter\\s+(?:36\\s+monaten|3\\s+jahren|drei\\s+jahren)|f(?:ü|ue)r\\s+kinder\\s+unter\\s+(?:36\\s+monaten|3\\s+jahren|drei\\s+jahren)\\s+nicht\\s+geeignet|not\\s+(?:suitable\\s+)?for\\s+children\\s+under\\s+(?:3\\s*(?:years|yrs)|36\\s+months)",
+    "message": "Under-3 warning must not be used on toys intended for children under 36 months",
+    "message_de": "Der Unter-3-Warnhinweis darf nicht auf Spielzeug für Kinder unter 36 Monaten stehen"
+   },
+   {
+    "id": "CT4-under3-no-hazard",
+    "rules": [
+     "CT4"
+    ],
+    "severity": "warning",
+    "markets": [
+     "EU"
+    ],
+    "regex": "nicht\\s+(?:geeignet\\s+)?f(?:ü|ue)r\\s+kinder\\s+unter\\s+(?:36\\s+monaten|3\\s+jahren|drei\\s+jahren)|f(?:ü|ue)r\\s+kinder\\s+unter\\s+(?:36\\s+monaten|3\\s+jahren|drei\\s+jahren)\\s+nicht\\s+geeignet",
+    "requires_missing": "erstickungsgefahr|verschluck|kleinteil|strangul|verheddern|choking|small parts",
+    "message": "Add the specific hazard, e.g. 'Erstickungsgefahr durch verschluckbare Kleinteile'",
+    "message_de": "Konkrete Gefahr ergänzen, z. B. „Erstickungsgefahr durch verschluckbare Kleinteile“"
+   },
+   {
+    "id": "CT2-achtung-missing",
+    "rules": [
+     "CT2"
+    ],
+    "severity": "warning",
+    "markets": [
+     "EU"
+    ],
+    "regex": "nicht\\s+(?:geeignet\\s+)?f(?:ü|ue)r\\s+kinder\\s+unter|benutzung\\s+(?:nur\\s+)?unter\\s+(?:unmittelbarer\\s+)?aufsicht|nur\\s+im\\s+flachen\\s+wasser|mit\\s+schutzausrüstung\\s+zu\\s+benutzen",
+    "requires_missing": "\\bachtung\\b",
+    "message": "Toy warnings must start with 'Achtung'",
+    "message_de": "Warnhinweise bei Spielzeug müssen mit „Achtung“ beginnen"
+   },
+   {
+    "id": "CT1-age-missing",
+    "rules": [
+     "CT1"
+    ],
+    "severity": "warning",
+    "markets": [
+     "EU",
+     "US"
+    ],
+    "regex": ".",
+    "requires_missing": "\\b(?:ab|from|ages?|age|für kinder von)\\s*\\d{1,2}\\b|\\b\\d{1,2}\\s*\\+|\\b\\d{1,2}\\s*(?:-|bis|to)\\s*\\d{1,2}\\s*(?:jahre|jahren|years?|yrs)\\b|\\b\\d{1,2}\\s*(?:jahre|jahren|years?|yrs|monate?n?|months?)\\b",
+    "also_ok_if_attribute_filled": [
+     "manufacturer_minimum_age",
+     "minimum_age",
+     "target_audience_age"
+    ],
+    "message": "No age recommendation visible in the offer",
+    "message_de": "Keine Altersempfehlung im Angebot sichtbar"
+   },
+   {
+    "id": "CT6-us-cautionary",
+    "rules": [
+     "CT6"
+    ],
+    "severity": "info",
+    "markets": [
+     "US"
+    ],
+    "regex": "\\bsmall parts\\b|\\bballoons?\\b|\\bmarbles?\\b|\\bsmall balls?\\b",
+    "message": "US: set the CPSIA cautionary-statement attributes (cpsia_cautionary_statement1-4)",
+    "message_de": "US: CPSIA-Warnhinweis-Attribute setzen (cpsia_cautionary_statement1-4)"
+   }
+  ],
+  "required_info_hint": "DE/EU: minimum (and maximum) age plus Annex-V warnings starting with 'Achtung', incl. the specific hazard, visible before purchase (CT1–CT4); GPSR manufacturer/RP data (G1); 'CE-zertifiziert' is no USP (E4 10a). From 2030-08-01: CE marking, warnings and DPP link in the offer (CT5). US: CPSIA cautionary statements via attributes, Children's Product Certificate + tracking label (CT6, CT8).",
+  "required_info_hint_de": "DE/EU: Mindest- (und Höchst-)Alter sowie Anhang-V-Warnhinweise mit 'Achtung' und konkreter Gefahr vor dem Kauf sichtbar (CT1–CT4); GPSR-Hersteller/Verantwortlicher (G1); 'CE-zertifiziert' ist kein Vorteil (E4 10a). Ab 2030-08-01: CE-Kennzeichnung, Warnhinweise und DPP-Link im Angebot (CT5). US: CPSIA-Warnhinweise über Attribute, CPC + Tracking-Label (CT6, CT8)."
+ },
+ "food": {
+  "product_types": [
+   "GROCERY",
+   "FOOD",
+   "DIETARY_SUPPLEMENT",
+   "DIETARY_SUPPLEMENTS",
+   "NUTRITIONAL_SUPPLEMENT",
+   "VITAMIN",
+   "HERBAL_SUPPLEMENT",
+   "PROTEIN_SUPPLEMENT_POWDER",
+   "SPORTS_NUTRITION",
+   "TEA",
+   "COFFEE",
+   "SNACK_FOOD_BAR",
+   "SWEETENER",
+   "HONEY",
+   "SPICE",
+   "CANDY",
+   "BABY_FOOD",
+   "BEVERAGE"
+  ],
+  "supplement_product_types": [
+   "DIETARY_SUPPLEMENT",
+   "DIETARY_SUPPLEMENTS",
+   "NUTRITIONAL_SUPPLEMENT",
+   "VITAMIN",
+   "HERBAL_SUPPLEMENT",
+   "PROTEIN_SUPPLEMENT_POWDER",
+   "SPORTS_NUTRITION"
+  ],
+  "product_words": {
+   "en": [
+    "dietary supplement",
+    "supplement",
+    "capsules",
+    "softgels",
+    "gummies",
+    "multivitamin",
+    "vitamin",
+    "protein powder",
+    "whey",
+    "collagen powder",
+    "herbal tea",
+    "coffee",
+    "snack bar",
+    "spice",
+    "honey"
+   ],
+   "de": [
+    "nahrungsergänzungsmittel",
+    "nahrungsergänzung",
+    "kapseln",
+    "tabletten",
+    "presslinge",
+    "multivitamin",
+    "vitamin",
+    "proteinpulver",
+    "eiweißpulver",
+    "whey",
+    "kollagenpulver",
+    "kräutertee",
+    "tee",
+    "kaffee",
+    "riegel",
+    "gewürz",
+    "honig",
+    "müsli"
+   ]
+  },
+  "error": {
+   "rules": [
+    "CF3",
+    "CF9",
+    "CF10"
+   ],
+   "en": [
+    "glp-1",
+    "glp1",
+    "semaglutide",
+    "tirzepatide",
+    "ozempic",
+    "wegovy",
+    "mounjaro",
+    "bpc-157",
+    "bpc 157",
+    "tb-500",
+    "sarm",
+    "sarms",
+    "ostarine",
+    "rad-140",
+    "ligandrol",
+    "dmaa",
+    "dmha",
+    "kratom",
+    "anabolic steroid",
+    "steroid alternative",
+    "prohormone",
+    "cbd",
+    "cannabidiol",
+    "full spectrum hemp",
+    "full-spectrum hemp",
+    "not for retail sale",
+    "not for resale",
+    "tester sample",
+    "prescription strength",
+    "alternative to prescription",
+    "natural viagra",
+    "like viagra"
+   ],
+   "de": [
+    "glp-1",
+    "glp1",
+    "semaglutid",
+    "tirzepatid",
+    "ozempic",
+    "wegovy",
+    "mounjaro",
+    "abnehmspritze",
+    "bpc-157",
+    "sarm",
+    "sarms",
+    "ostarine",
+    "dmaa",
+    "kratom",
+    "anabolika",
+    "cbd",
+    "cannabidiol",
+    "von ärzten empfohlen",
+    "ärztlich empfohlen",
+    "empfohlen von ärzten",
+    "von apothekern empfohlen",
+    "apotheker empfohlen",
+    "gegen erkältung",
+    "beugt erkältungen vor",
+    "gegen grippe",
+    "gegen diabetes"
+   ]
+  },
+  "warning": {
+   "rules": [
+    "CF1",
+    "CF2",
+    "CF3",
+    "CF4",
+    "CF7",
+    "CF8",
+    "CF9",
+    "CB8"
+   ],
+   "en": [
+    "immune booster",
+    "immunity booster",
+    "doctor recommended",
+    "physician recommended",
+    "recommended by doctors",
+    "pharmacist recommended",
+    "fat burner",
+    "fat-burner",
+    "burns fat",
+    "appetite suppressant",
+    "non-gmo",
+    "sugar free",
+    "sugar-free",
+    "fat free",
+    "fat-free",
+    "high protein",
+    "organic",
+    "usda organic",
+    "certified organic",
+    "diabetes",
+    "diabetic",
+    "cancer",
+    "tumor",
+    "alzheimer",
+    "dementia",
+    "arthritis",
+    "hypertension",
+    "high blood pressure",
+    "lowers cholesterol",
+    "lowers blood pressure",
+    "depression",
+    "anxiety disorder",
+    "adhd",
+    "erectile dysfunction",
+    "insomnia"
+   ],
+   "de": [
+    "stärkt die abwehrkräfte",
+    "abwehrkräfte stärken",
+    "immunbooster",
+    "immun-booster",
+    "boostet das immunsystem",
+    "stärkt die immunabwehr",
+    "unterstützt das immunsystem",
+    "gut für die gesundheit",
+    "gesundheitsfördernd",
+    "fördert die gesundheit",
+    "vitalisierend",
+    "für mehr vitalität",
+    "wohlbefinden",
+    "entschlackend",
+    "entschlackung",
+    "entsäuernd",
+    "entsäuerung",
+    "fatburner",
+    "fettverbrennung",
+    "fett verbrennen",
+    "appetitzügler",
+    "sättigungsgefühl",
+    "senkt den cholesterinspiegel",
+    "senkt den blutzucker",
+    "blutzuckerregulierend",
+    "zuckerfrei",
+    "ohne zuckerzusatz",
+    "fettarm",
+    "fettfrei",
+    "proteinreich",
+    "hoher proteingehalt",
+    "eiweißreich",
+    "reich an ballaststoffen",
+    "ballaststoffquelle",
+    "kalorienarm",
+    "natriumarm",
+    "bio-qualität",
+    "aus biologischem anbau",
+    "aus kontrolliert biologischem anbau",
+    "aus ökologischem anbau",
+    "öko-qualität",
+    "bio-zertifiziert",
+    "eu-bio",
+    "bio-siegel"
+   ]
+  },
+  "patterns": [
+   {
+    "id": "CF3-weight-loss-rate",
+    "rules": [
+     "CF3"
+    ],
+    "severity": "error",
+    "markets": [
+     "EU",
+     "US"
+    ],
+    "regex": "\\b\\d+(?:[.,]\\d+)?\\s*(?:kg|kilo\\w*|pfund|lbs?|pounds)\\s*(?:in|innerhalb\\s+von|within|in\\s+nur)\\s*(?:\\d+|einer|eine|one|a)\\s*(?:tag\\w*|woche\\w*|monat\\w*|days?|weeks?|months?)\\b|\\b(?:verlier(?:en|t|e|st)?|abnehmen|nehmen\\s+sie|lose|losing|drop)\\b[^.]{0,30}?\\b\\d+(?:[.,]\\d+)?\\s*(?:kg|kilo\\w*|pfund|lbs?|pounds)\\b",
+    "message": "Claims on rate or amount of weight loss are not allowed (EU Art. 12 HCR); US: disease/S-F substantiation",
+    "message_de": "Aussagen über Dauer oder Ausmaß einer Gewichtsabnahme sind nicht erlaubt (EU Art. 12 HCVO)"
+   },
+   {
+    "id": "CF7-organic-without-code",
+    "rules": [
+     "CF7"
+    ],
+    "severity": "warning",
+    "markets": [
+     "EU"
+    ],
+    "regex": "(?<![\\w-])(?:bio|öko|oeko|organic)(?![\\w])|(?<![\\w-])bio-(?=\\w)|\\bkba\\b",
+    "requires_missing": "\\b[A-Z]{2}-(?:ÖKO|OEKO|OKO|BIO|ECO|EKO|ORG)-\\d{3}\\b",
+    "requires_missing_case_sensitive": true,
+    "message": "Organic claim: show the control-body code (e.g. DE-ÖKO-0xx); online seller must be organic-certified",
+    "message_de": "Bio-Aussage: Kontrollstellen-Code angeben (z. B. DE-ÖKO-0xx); Online-Händler braucht Bio-Zertifizierung"
+   },
+   {
+    "id": "CF8-us-sf-without-disclaimer",
+    "rules": [
+     "CF8"
+    ],
+    "severity": "warning",
+    "markets": [
+     "US"
+    ],
+    "only_product_types": "supplement_product_types",
+    "regex": "\\b(?:supports?|promotes?|maintains?|helps?\\s+(?:maintain|support|promote))\\b",
+    "requires_missing": "not\\s+been\\s+evaluated\\s+by\\s+the\\s+food\\s+and\\s+drug\\s+administration",
+    "message": "Structure/function claim without the FDA disclaimer (21 CFR 101.93(c))",
+    "message_de": "Struktur-/Funktionsaussage ohne FDA-Hinweis (21 CFR 101.93(c))"
+   }
+  ],
+  "required_phrases": {
+   "id": "CF6-nemv",
+   "rules": [
+    "CF6"
+   ],
+   "severity": "warning",
+   "markets": [
+    "EU"
+   ],
+   "only_product_types": "supplement_product_types",
+   "note": "§ 4 NemV mandatory statements; may sit on label images only – downgrade to info if images exist",
+   "de_regex": {
+    "designation": "nahrungserg(?:ä|ae)nzungsmittel",
+    "daily_dose": "empfohlene\\s+t(?:ä|ae)gliche\\s+verzehrs?menge",
+    "do_not_exceed": "nicht\\s+(?:zu\\s+)?(?:ü|ue)berschreiten|nicht\\s+(?:ü|ue)berschritten",
+    "balanced_diet": "ausgewogene\\w*\\s+und\\s+abwechslungsreiche\\w*\\s+ern(?:ä|ae)hrung",
+    "children": "reichweite\\s+von\\s+kleinen\\s+kindern|kleinen\\s+kindern\\s+unzug(?:ä|ae)nglich|f(?:ü|ue)r\\s+kleine\\s+kinder\\s+unzug(?:ä|ae)nglich"
+   }
+  },
+  "required_info_hint": "EU/DE: all LMIV Art. 9 particulars except best-before date on the offer page – name, ingredients with highlighted allergens, net quantity, nutrition declaration, operator name + address (CF5); supplements: § 4 NemV statements (CF6); organic: control-body code + own certification (CF7); health claims only in authorised wording (CF1–CF3). US supplements: detail page must match the Supplement Facts label (CF9), images of the full label, S/F disclaimer (CF8), no CBD (CF10).",
+  "required_info_hint_de": "EU/DE: alle Pflichtangaben nach Art. 9 LMIV außer MHD im Angebot – Bezeichnung, Zutaten mit hervorgehobenen Allergenen, Nettofüllmenge, Nährwerttabelle, Lebensmittelunternehmer mit Anschrift (CF5); NEM: Pflichthinweise § 4 NemV (CF6); Bio: Code der Kontrollstelle + eigene Zertifizierung (CF7); gesundheitsbezogene Angaben nur im zugelassenen Wortlaut (CF1–CF3). US: Angebot = Etikett (CF9), Disclaimer bei S/F-Aussagen (CF8), kein CBD (CF10)."
+ }
+}

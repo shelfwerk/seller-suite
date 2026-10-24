@@ -1,0 +1,11 @@
+{
+  "name": "termsweep",
+  "displayName": "TermSweep — Amazon PPC search term audit",
+  "version": "1.1.0",
+  "description": "Finds wasted Amazon Sponsored Products spend in your search term report: bleeding search terms to negate, too-expensive converting terms, and winners to add as exact keywords. Works with report downloads in any console language (EN/DE and more); runs locally, no API access needed.",
+  "author": {
+    "name": "Michael Fenkhuber"
+  },
+  "license": "MIT",
+  "keywords": ["amazon", "ppc", "sponsored-products", "search-terms", "negative-keywords", "acos", "fba", "ecommerce"]
+}
