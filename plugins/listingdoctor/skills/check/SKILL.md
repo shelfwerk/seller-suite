@@ -2,7 +2,7 @@
 name: check
 description: Checks Amazon listings against Amazon's current listing rules and EU law and returns a score with the five most important fixes per listing — title length (75 characters since July 2026), forbidden characters and words, bullet length, backend search term bytes, promotional, health and eco claims, category rules for cosmetics, electronics, toys and food, duplicates, missing required attributes, images and keyword coverage. Use when the user wants a listing checked, audited or scored, mentions "Listing prüfen", "Titel zu lang", "Artikel-Highlights", "Suchbegriffe Backend", "Kategorie-Angebotsbericht", "flat file", an ASIN to review, or pastes a title and bullet points.
 argument-hint: "[listing file | ASIN,ASIN | pasted text] [search term report]"
-allowed-tools: Bash(python3:*), Bash(python:*), Bash(py:*), Read, Glob, Write
+allowed-tools: 'Bash(python3 "${CLAUDE_PLUGIN_ROOT}/scripts/listingdoctor.py" *), Bash(python "${CLAUDE_PLUGIN_ROOT}/scripts/listingdoctor.py" *), Bash(py -3 "${CLAUDE_PLUGIN_ROOT}/scripts/listingdoctor.py" *), Read, Glob, Edit(./**)'
 ---
 
 # ListingDoctor check

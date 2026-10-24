@@ -33,7 +33,7 @@ try:
 except ImportError:  # free edition
     mc_pro = None
 
-VERSION = "1.1.4"
+VERSION = "1.1.5"
 PRO_HINT = ("Diese Funktion gehört zu MargenCheck Pro (ganze Angebotslisten, Mengenszenarien, Excel-Bericht). "
             "Die Gratis-Edition rechnet ein Produkt: margencheck.py rechner … oder --datei <liste> --pos <nr>.")
 

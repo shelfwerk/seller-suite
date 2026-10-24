@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.5 – 2026-10-24 (Verzeichnis-Prüfung)
+
+- Skills geben nur noch das eigene Skript frei (`python3 "${CLAUDE_PLUGIN_ROOT}/scripts/margencheck.py" …`, dazu `python`/`py -3`)
+  statt beliebiger Python-Befehle. `pdftotext` nur mit `-layout`, Schreiben nur im Arbeitsordner (`Edit(./**)`).
+- `plugin.json`: Website, Repository und Support-Adresse, Plugin-Icon.
+- Keine Änderung an Rechnung, Gebühren oder Skripten.
+
 ## 1.1.4 – 2026-10-24 (Skill-Frontmatter)
 
 - **Fehler behoben:** Die Beschreibungen von `setup` (Gratis und Pro) sowie `rechner`, `angebot` und `szenarien` (Pro)
@@ -57,7 +64,7 @@
   Spitzenzeit-Zuschlag nur noch auf Pakete (nicht Umschläge).
 - Seefracht-Richtwert 170 €/m³ mit Herleitung; Nebenkosten je Sendung jetzt je Frachtart (See 450 €,
   Bahn 150 €, Luft 100 €).
-- Skills: genau ein Befehl ohne `;`/`&&`/`echo $?` (vermeidet abgelehnte Bash-Freigaben), Shopify-Hinweis
+- Skills: genau ein einfacher Befehl je Aufruf, ohne verkettete Befehle (vermeidet abgelehnte Freigaben), Shopify-Hinweis
   auf Beispiel-Versandkosten, Szenarien aus xlsx über eine CSV mit Monatsabsatz.
 - Bericht: Treibstoffaufschlag und Digitalsteuer in der Stückrechnung ausgewiesen, Shopify-Grundlagenzeile.
 - Niedrigpreis-Hebel nur noch, wenn er den DB verbessert.

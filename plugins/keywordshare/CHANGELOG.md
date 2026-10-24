@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.3 — 2026-10-24
+
+Directory review fixes, no change to the analysis:
+- Skills pre-approve only their own script (`python3 "${CLAUDE_PLUGIN_ROOT}/scripts/keywordshare.py" …`, plus `python`/`py -3`)
+  instead of any Python command.
+- `plugin.json`: homepage, repository and support e-mail, clearer wording; plugin icon.
+
 ## 1.0.2 — 2026-10-22
 
 - Protect list in TermSweep's format (TermSweep ≥ 1.1): brand words (`--brand-terms`) as plain lines, every core

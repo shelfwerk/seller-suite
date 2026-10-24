@@ -1,8 +1,15 @@
 # Changelog
 
+## 1.2.1 – 2026-10-24
+
+Directory review fixes, no change to the checks:
+- Skills pre-approve only their own script (`python3 "${CLAUDE_PLUGIN_ROOT}/scripts/listingdoctor.py" …`, plus `python`/`py -3`)
+  instead of any Python command. File writes are limited to the working folder (`Edit(./**)`).
+- `plugin.json`: homepage, repository and support e-mail; plugin icon.
+
 ## 1.2.0 – 2026-10-22
 
-Keyword input aligned with TermSweep and KeywordShare (integration chain B: "one download, two checks").
+Keyword input aligned with TermSweep and KeywordShare (integration chain B: the same search term report feeds both checks).
 
 - Search term reports are now read with TermSweep's reader (`scripts/ld_ads.py`, copy of `ts_report.py` 1.0.1, the same
   copy KeywordShare uses) and ranked by **orders**: amazon.de console up to 2026 ("7 Tage, Aufträge gesamt (#)"), DE/EN 2026

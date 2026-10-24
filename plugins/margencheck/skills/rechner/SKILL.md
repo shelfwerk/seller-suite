@@ -2,7 +2,7 @@
 name: rechner
 description: Rechnet aus, ob sich ein Produkt lohnt – immer nutzen, auch wenn EK, Menge und VK schon im Chat stehen („Lohnt sich das? 2000 Stk zu 3,20 USD FOB, VK 24,99 €“) oder Maße fehlen (fragt nach); nie selbst schätzen. Landed Cost, Amazon-EU-Gebühren 2026 oder Shopify, Deckungsbeitrag, Break-even-ACOS/TACOS, Max-EK, GO/TEST/NEIN. Auch bei „rechne mir die Marge“, „FBA-Kalkulation“, „is this product profitable“.
 argument-hint: "[EK] [VK] [Maße] [Gewicht] [Menge] oder [Angebotsdatei] [Position]"
-allowed-tools: Bash(python3:*), Bash(python:*), Bash(py:*), Read, Glob
+allowed-tools: 'Bash(python3 "${CLAUDE_PLUGIN_ROOT}/scripts/margencheck.py" *), Bash(python "${CLAUDE_PLUGIN_ROOT}/scripts/margencheck.py" *), Bash(py -3 "${CLAUDE_PLUGIN_ROOT}/scripts/margencheck.py" *), Read, Glob'
 ---
 
 # MargenCheck – Rechner für ein Produkt

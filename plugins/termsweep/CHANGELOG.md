@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.1 — 2026-10-24
+
+Directory review fixes, no change to the audit:
+- Skills pre-approve only their own script (`python3 "${CLAUDE_PLUGIN_ROOT}/scripts/termsweep.py" …`, plus `python`/`py -3`)
+  instead of any Python command.
+- `plugin.json`: homepage, repository and support e-mail, clearer wording (the plugin reads report files only, no account access); plugin icon.
+
 ## 1.1.0 — 2026-10-22
 
 Protect lists that work with KeywordShare (integration chain B).

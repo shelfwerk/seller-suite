@@ -1,11 +1,15 @@
 {
   "name": "listingdoctor",
   "displayName": "ListingDoctor — Amazon listing check",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Checks Amazon listings against Amazon's current rules (75-character titles since July 2026, Item Highlights, bullets, 249-byte backend search terms, forbidden characters and claims) and EU law (EmpCo eco claims, GPSR, textile labelling). Score plus the top 5 fixes per listing, from a category listing report, flat file, ASINs or pasted text. Runs locally, never changes your listings.",
   "author": {
-    "name": "Michael Fenkhuber"
+    "name": "Michael Fenkhuber",
+    "email": "support@shelfwerk.com",
+    "url": "https://shelfwerk.com"
   },
+  "homepage": "https://shelfwerk.com",
+  "repository": "https://github.com/shelfwerk/seller-suite",
   "license": "MIT",
   "keywords": [
     "amazon",

@@ -35,7 +35,7 @@ except ImportError:
     P = None
     PRO = False
 
-VERSION = "1.2.0"
+VERSION = "1.2.1"
 FREE_TOP = 5
 
 

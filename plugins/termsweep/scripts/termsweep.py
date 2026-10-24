@@ -35,7 +35,7 @@ try:
 except ImportError:
     ts_pro = None
 
-VERSION = "1.1.0"
+VERSION = "1.1.1"
 
 
 def parse_map(items):

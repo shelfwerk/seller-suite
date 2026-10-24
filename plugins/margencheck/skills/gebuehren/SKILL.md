@@ -2,7 +2,7 @@
 name: gebuehren
 description: Zeigt Stand, Quelle und Prüfdatum der MargenCheck-Gebührentabellen (Amazon EU, Shopify, Fracht, Zoll) und alle ungeprüften Werte. Bei „wie aktuell sind die Gebühren“, „woher kommen die Zahlen“ oder nach Amazon-Preisänderungen.
 argument-hint: "[neue Tarifübersicht als PDF]"
-allowed-tools: Bash(python3:*), Bash(python:*), Bash(py:*), Bash(pdftotext:*), Read, Glob, Write
+allowed-tools: 'Bash(python3 "${CLAUDE_PLUGIN_ROOT}/scripts/margencheck.py" *), Bash(python "${CLAUDE_PLUGIN_ROOT}/scripts/margencheck.py" *), Bash(py -3 "${CLAUDE_PLUGIN_ROOT}/scripts/margencheck.py" *), Bash(pdftotext -layout *), Read, Glob, Edit(./**)'
 ---
 
 # MargenCheck – Gebührentabellen

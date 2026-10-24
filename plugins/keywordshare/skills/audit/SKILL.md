@@ -2,7 +2,7 @@
 name: audit
 description: Analyses an Amazon Brand Analytics Search Query Performance report and shows the brand's share of search demand — impression, click, cart-add and purchase share per search query, where the funnel leaks (seen but not clicked, clicked but not bought), the biggest visibility gaps, strong queries to defend, queries that do not fit, and a keyword list for the listing. Use when the user mentions Search Query Performance, SQP, Brand Analytics, search query share, market share or impression share on Amazon, "Suchanfragen-Leistung", "Suchanfragenleistung", "Markenanalyse", "Marktanteil je Suchbegriff", or shares such a report file.
 argument-hint: "[report file]"
-allowed-tools: Bash(python3:*), Bash(python:*), Bash(py:*), Read, Glob
+allowed-tools: 'Bash(python3 "${CLAUDE_PLUGIN_ROOT}/scripts/keywordshare.py" *), Bash(python "${CLAUDE_PLUGIN_ROOT}/scripts/keywordshare.py" *), Bash(py -3 "${CLAUDE_PLUGIN_ROOT}/scripts/keywordshare.py" *), Read, Glob'
 ---
 
 # KeywordShare audit

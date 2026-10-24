@@ -2,7 +2,7 @@
 name: setup
 description: Sets KeywordShare's brand words (own brand queries are marked), the target impression share and the minimum market purchases per query by writing keywordshare.json in the working folder. Use before the first analysis or when the user says "set up KeywordShare", "my brand is …", "target share", "KeywordShare einrichten" or "Ziel-Anteil festlegen".
 argument-hint: "[brand words] [target share %]"
-allowed-tools: Bash(python3:*), Bash(python:*), Bash(py:*), Read
+allowed-tools: 'Bash(python3 "${CLAUDE_PLUGIN_ROOT}/scripts/keywordshare.py" *), Bash(python "${CLAUDE_PLUGIN_ROOT}/scripts/keywordshare.py" *), Bash(py -3 "${CLAUDE_PLUGIN_ROOT}/scripts/keywordshare.py" *), Read'
 ---
 
 # KeywordShare setup

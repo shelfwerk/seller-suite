@@ -2,7 +2,7 @@
 name: setup
 description: "Speichert MargenCheck-Einstellungen in margencheck.json: Marktplatz (amazon.de/CEP, FR, IT, ES), Kanal, Einkaufswährung, eigene Frachtpreise, EUSt-Abzug, Prep, Werbe- und Retourenanteil. Bei „MargenCheck einrichten“ oder eigenen Kosten."
 argument-hint: "[Marktplatz] [Kanal]"
-allowed-tools: Bash(python3:*), Bash(python:*), Bash(py:*), Read
+allowed-tools: 'Bash(python3 "${CLAUDE_PLUGIN_ROOT}/scripts/margencheck.py" *), Bash(python "${CLAUDE_PLUGIN_ROOT}/scripts/margencheck.py" *), Bash(py -3 "${CLAUDE_PLUGIN_ROOT}/scripts/margencheck.py" *), Read'
 ---
 
 # MargenCheck einrichten

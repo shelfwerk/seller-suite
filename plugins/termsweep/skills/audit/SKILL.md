@@ -2,7 +2,7 @@
 name: audit
 description: Audits an Amazon Sponsored Products search term report and shows where ad spend leaks — search terms with clicks but no orders (negative keyword candidates), converting terms that are too expensive, and winners to add as exact keywords. Use when the user mentions a search term report, negative keywords, wasted PPC spend, ACOS too high, an Amazon PPC audit, "Suchbegriffbericht", "negative Keywords", "Werbekosten ohne Verkäufe", or shares an Amazon Ads report file.
 argument-hint: "[report file] [target ACOS %]"
-allowed-tools: Bash(python3:*), Bash(python:*), Bash(py:*), Read, Glob
+allowed-tools: 'Bash(python3 "${CLAUDE_PLUGIN_ROOT}/scripts/termsweep.py" *), Bash(python "${CLAUDE_PLUGIN_ROOT}/scripts/termsweep.py" *), Bash(py -3 "${CLAUDE_PLUGIN_ROOT}/scripts/termsweep.py" *), Read, Glob'
 ---
 
 # TermSweep audit

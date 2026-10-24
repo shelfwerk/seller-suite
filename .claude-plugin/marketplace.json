@@ -12,8 +12,8 @@
     {
       "name": "termsweep",
       "source": "./plugins/termsweep",
-      "description": "Finds wasted Amazon Sponsored Products spend in your search term report: bleeding search terms to negate, too-expensive converting terms, and winners to add as exact keywords. Works with report downloads in any console language (EN/DE and more); runs locally, no API access needed.",
-      "version": "1.1.0",
+      "description": "Finds wasted Amazon Sponsored Products spend in your search term report: bleeding search terms to negate, too-expensive converting terms, and winners to add as exact keywords. Works with reports in any console language (EN/DE and more); runs locally, without access to your Amazon account.",
+      "version": "1.1.1",
       "category": "productivity",
       "keywords": [
         "amazon",
@@ -29,8 +29,8 @@
     {
       "name": "keywordshare",
       "source": "./plugins/keywordshare",
-      "description": "Reads the Brand Analytics Search Query Performance report and shows your impression, click, cart-add and purchase share per search query, where the funnel leaks, the biggest visibility gaps, strong queries to defend and a keyword list for your listing. Runs locally, no API keys.",
-      "version": "1.0.2",
+      "description": "Reads the Brand Analytics Search Query Performance report and shows your impression, click, cart-add and purchase share per search query, where the funnel leaks, the biggest visibility gaps, strong queries to defend and a keyword list for your listing. Runs locally, without access to your Amazon account.",
+      "version": "1.0.3",
       "category": "productivity",
       "keywords": [
         "amazon",
@@ -47,7 +47,7 @@
       "name": "listingdoctor",
       "source": "./plugins/listingdoctor",
       "description": "Checks Amazon listings against Amazon's current rules (75-character titles since July 2026, Item Highlights, bullets, 249-byte backend search terms, forbidden characters and claims) and EU law (EmpCo eco claims, GPSR, textile labelling). Score plus the top 5 fixes per listing, from a category listing report, flat file, ASINs or pasted text. Runs locally, never changes your listings.",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "category": "productivity",
       "keywords": [
         "amazon",
@@ -65,7 +65,7 @@
       "name": "margencheck",
       "source": "./plugins/margencheck",
       "description": "Rechnet ein Produkt aus einem Lieferantenangebot durch: Landed Cost je Stück (EK, Fracht See/Bahn/Luft, Zoll, EUSt, Prep, Inbound), Amazon-Gebühren nach der EU-Tarifübersicht 2026 (Verkaufsgebühr, FBA-Größenklasse, Niedrigpreisversand, Lager inkl. Q4, Retouren) oder Shopify-Kosten, Deckungsbeitrag, Break-even-ACOS/TACOS, Max-EK für die Verhandlung, Kapitalbedarf und GO/TEST/NEIN. Gebühren als datierte Tabelle mit Quelle, Rechnung deterministisch in Python, läuft lokal.",
-      "version": "1.1.4",
+      "version": "1.1.5",
       "category": "productivity",
       "keywords": [
         "amazon",

@@ -1,11 +1,26 @@
 {
   "name": "margencheck",
   "displayName": "MargenCheck — Produkt-Rechner für Amazon FBA & Shopify",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Rechnet ein Produkt aus einem Lieferantenangebot durch: Landed Cost je Stück (EK, Fracht See/Bahn/Luft, Zoll, EUSt, Prep, Inbound), Amazon-Gebühren nach der EU-Tarifübersicht 2026 (Verkaufsgebühr, FBA-Größenklasse, Niedrigpreisversand, Lager inkl. Q4, Retouren) oder Shopify-Kosten, Deckungsbeitrag, Break-even-ACOS/TACOS, Max-EK für die Verhandlung, Kapitalbedarf und GO/TEST/NEIN. Gebühren als datierte Tabelle mit Quelle, Rechnung deterministisch in Python, läuft lokal.",
   "author": {
-    "name": "Michael Fenkhuber"
+    "name": "Michael Fenkhuber",
+    "email": "support@shelfwerk.com",
+    "url": "https://shelfwerk.com"
   },
+  "homepage": "https://shelfwerk.com",
+  "repository": "https://github.com/shelfwerk/seller-suite",
   "license": "MIT",
-  "keywords": ["amazon", "fba", "shopify", "sourcing", "landed-cost", "margin", "break-even-acos", "tacos", "deutsch", "ecommerce"]
+  "keywords": [
+    "amazon",
+    "fba",
+    "shopify",
+    "sourcing",
+    "landed-cost",
+    "margin",
+    "break-even-acos",
+    "tacos",
+    "deutsch",
+    "ecommerce"
+  ]
 }

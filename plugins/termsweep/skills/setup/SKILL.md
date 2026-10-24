@@ -2,7 +2,7 @@
 name: setup
 description: Sets TermSweep's target ACOS, protected terms (brand, own product names, core keywords) and display currency by writing termsweep.json in the working folder. Use before the first audit or when the user says "set my target ACOS", "protect my brand keywords", "TermSweep einrichten" or "Ziel-ACOS festlegen".
 argument-hint: "[target ACOS %] [protected terms]"
-allowed-tools: Bash(python3:*), Bash(python:*), Bash(py:*), Read
+allowed-tools: 'Bash(python3 "${CLAUDE_PLUGIN_ROOT}/scripts/termsweep.py" *), Bash(python "${CLAUDE_PLUGIN_ROOT}/scripts/termsweep.py" *), Bash(py -3 "${CLAUDE_PLUGIN_ROOT}/scripts/termsweep.py" *), Read'
 ---
 
 # TermSweep setup
