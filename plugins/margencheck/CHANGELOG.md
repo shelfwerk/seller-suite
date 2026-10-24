@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.4 – 2026-10-24 (Skill-Frontmatter)
+
+- **Fehler behoben:** Die Beschreibungen von `setup` (Gratis und Pro) sowie `rechner`, `angebot` und `szenarien` (Pro)
+  enthielten „: " ohne Anführungszeichen. Das ist ungültiges YAML. Neuere Claude-CLI-Versionen melden „frontmatter failed to parse",
+  und der Skill lädt dann ohne Beschreibung und springt nicht mehr an. Die Werte stehen jetzt in Anführungszeichen, der Text ist unverändert.
+- Neuer Test prüft alle SKILL.md auf YAML-sichere Werte.
+- Keine Änderung an Rechnung, Gebühren oder Skripten.
+
 ## 1.1.3 – 2026-10-22 (Versionsangabe)
 
 - **Fehler behoben:** `margencheck.py --version` meldete noch 1.1.0. Die Versionsangabe im Skript stimmt jetzt mit
